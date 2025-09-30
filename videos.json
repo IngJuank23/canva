@@ -1,0 +1,15 @@
+{
+  "sections": [
+    {
+      "id": "introduccion",
+      "name": "Introducción",
+      "order": 0
+    },
+    {
+      "id": "basico",
+      "name": "Básico",
+      "order": 1
+    }
+  ],
+  "items": []
+}
