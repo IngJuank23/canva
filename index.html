@@ -130,6 +130,7 @@
     <div style="margin:12px 0; display:flex; gap:10px;">
       <input id="searchPublic" class="input grow" placeholder="Buscar… (título o ID)" aria-label="Buscar videos"/>
       <button id="adminToggle" class="btn btn-ghost" aria-controls="adminPanel" aria-expanded="false">Administrador</button>
+<small class="sub" id="adminHelp" style="margin-left:8px;">Tip: abre <code>#admin</code> para mostrar el panel (Ctrl+Alt+A)</small>
     </div>
 
     <!-- Panel de administrador (oculto por defecto) -->
@@ -401,11 +402,27 @@
     unmuteBtn.onclick = ()=> ytCommand('unMute');
 
     // ---- Admin controls ----
-    $('#adminToggle').onclick = ()=>{ const panel = document.getElementById('adminPanel'); panel.classList.toggle('admin-only'); const expanded = panel.classList.contains('admin-only') ? 'false' : 'true'; document.getElementById('adminToggle').setAttribute('aria-expanded', expanded); };
+    function toggleAdminPanel(open){
+      const panel = document.getElementById('adminPanel');
+      const closing = (open===false);
+      if(closing){ panel.classList.add('admin-only'); }
+      else { panel.classList.remove('admin-only'); }
+      const expanded = panel.classList.contains('admin-only') ? 'false' : 'true';
+      document.getElementById('adminToggle').setAttribute('aria-expanded', expanded);
+      if(expanded==='true'){ setTimeout(()=> document.getElementById('adminPass')?.focus(), 50); }
+    }
+
+    $('#adminToggle').onclick = ()=> { const p = document.getElementById('adminPanel'); const willOpen = p.classList.contains('admin-only'); toggleAdminPanel(willOpen); } panel.classList.toggle('admin-only'); const expanded = panel.classList.contains('admin-only') ? 'false' : 'true'; document.getElementById('adminToggle').setAttribute('aria-expanded', expanded); };
     $('#loginAdmin').onclick = doAdminLogin;
     $('#adminPass').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); doAdminLogin(); }});
 
-    function doAdminLogin(){ const p = $('#adminPass').value; if(p && p===CONFIG.ADMIN_PASS){ isAdmin = true; $('#adminPass').value=''; showToast('Modo administrador activo'); render(getSearchQuery()); refreshSectionSelects(); } else { showToast('Clave incorrecta'); }}
+    function doAdminLogin(){
+      const p = $('#adminPass').value;
+      if(p && p===CONFIG.ADMIN_PASS){
+        isAdmin = true; $('#adminPass').value=''; showToast('Modo administrador activo');
+        render(getSearchQuery()); refreshSectionSelects();
+      } else { showToast('Clave incorrecta'); }
+    } else { showToast('Clave incorrecta'); }}
 
     $('#logoutAdmin').onclick = ()=>{ isAdmin = false; showToast('Sesión de administrador cerrada'); render(getSearchQuery()); };
 
@@ -519,6 +536,19 @@
 
     // Init
     load();
+
+    // Abrir panel admin por URL (#admin o ?admin=1)
+    try{
+      const qs = new URLSearchParams(location.search);
+      if(location.hash==='#admin' || qs.get('admin')==='1'){ toggleAdminPanel(true); }
+    }catch(_e){}
+
+    // Atajo de teclado Ctrl+Alt+A para abrir panel
+    document.addEventListener('keydown', (e)=>{
+      const key = e.key?.toLowerCase?.() || '';
+      if(e.ctrlKey && e.altKey && key==='a'){ e.preventDefault(); toggleAdminPanel(true); }
+    });
   </script>
 </body>
 </html>
+
