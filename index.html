@@ -1,554 +1,431 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>CURSO BASICO DE CANVA</title>
-  <meta name="description" content="Curso Básico de Canva: galería de recursos en video. Usuarios sólo ven y reproducen; el administrador agrega y organiza por secciones. Sin salidas a YouTube." />
-  <meta name="theme-color" content="#0b0b0f" />
-  <meta property="og:title" content="CURSO BASICO DE CANVA" />
-  <meta property="og:description" content="Galería de videos por secciones. Usuarios solo visualizan; admin gestiona." />
-  <!-- Sube un favicon si quieres: /favicon.ico -->
+  <title>Curso Básico de Canva</title>
+  <meta name="description" content="Curso Básico de Canva: videos por secciones, acceso de administrador para agregar contenido y enlace para obtener Canva con asesor." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root{
-      --bg:#0b0b0f; --panel:#12121a; --card:#151520; --muted:#a9adc1; --text:#f2f3f7;
-      --accent:#22d3ee; --accent-2:#a78bfa; --ok:#34d399; --danger:#f43f5e; --shadow:0 10px 25px rgba(0,0,0,.45); --radius:18px;
+      --bg:#0b0b0f;       /* negro profundo */
+      --panel:#12121a;    /* panel oscuro */
+      --card:#161621;
+      --muted:#a3a3b2;
+      --text:#e9e9f1;     /* texto claro */
+      --brand:#7cfbde;    /* acento menta-neón */
+      --brand-2:#8b5cf6;  /* acento lila */
+      --danger:#ef4444;
+      --ok:#22c55e;
+      --shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 40px rgba(124,251,222,.05);
+      --radius: 16px;
     }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0; background:radial-gradient(1200px 800px at 80% -10%, #111628 0%, #0b0b0f 50%, #0b0b0f 100%);
-      color:var(--text); font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial; letter-spacing:.2px;}
-    .no-scroll{overflow:hidden}
-    .container{max-width:1100px; margin:0 auto; padding:20px}
-
-    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px);
-      background:linear-gradient(180deg, rgba(17,17,23,.8), rgba(17,17,23,.45)); border-bottom:1px solid rgba(255,255,255,.06);} 
-    .header-wrap{display:flex; align-items:center; justify-content:space-between; gap:14px;}
-    h1{font-size:1.25rem; margin:0; font-weight:800; letter-spacing:.3px}
-    .sub{font-size:.9rem; color:var(--muted)}
-
-    .badge{ display:inline-flex; gap:6px; align-items:center; padding:6px 10px; border-radius:999px; font-size:.78rem; border:1px solid rgba(255,255,255,.09); background:rgba(255,255,255,.03) }
-
-    .toolbar{display:grid; gap:12px; grid-template-columns: 1fr; padding:12px 0}
-    @media(min-width:900px){ .toolbar{grid-template-columns: 1.1fr .7fr .7fr auto auto} }
-
-    .input, .btn, select{
-      border-radius:14px; border:1px solid rgba(255,255,255,.09); background:var(--panel); color:var(--text);
-      padding:12px 14px; outline:none; transition:.2s border-color, .2s transform; font-size:.95rem;
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial; 
+      background: radial-gradient(1200px 800px at 10% -10%, rgba(139,92,246,.12), transparent 40%),
+                  radial-gradient(900px 600px at 110% 10%, rgba(124,251,222,.10), transparent 40%),
+                  var(--bg);
+      color:var(--text); line-height:1.6;
     }
-    .input::placeholder{color:#8d93ad} .input:focus{border-color:var(--accent)}
-    .btn{ cursor:pointer; font-weight:800; } .btn:hover{ transform: translateY(-1px); }
-    .btn-accent{ background:linear-gradient(120deg, var(--accent), var(--accent-2)); border-color:transparent; color:#071018; }
-    .btn-ghost{ background:var(--panel) }
-    .btn-danger{ background:linear-gradient(120deg, #ef4444, #f43f5e); border-color:transparent; color:#fff }
+    a{color:var(--brand)}
+    header{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter:saturate(140%) blur(8px);
+      background: linear-gradient(180deg, rgba(13,13,20,.9), rgba(13,13,20,.6));
+      border-bottom:1px solid rgba(124,251,222,.15);
+    }
+    .wrap{max-width:1100px; margin:0 auto; padding:18px 18px}
+    .row{display:flex; align-items:center; gap:14px; justify-content:space-between}
+    .title{font-size:clamp(22px,3vw,34px); font-weight:800; letter-spacing:.3px}
+    .admin-btn{
+      display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; 
+      background:linear-gradient(135deg, rgba(124,251,222,.15), rgba(139,92,246,.18));
+      border:1px solid rgba(124,251,222,.25); color:var(--text); cursor:pointer;
+      box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .2s ease;
+    }
+    .admin-btn:hover{ transform:translateY(-1px) }
 
-    .row{display:flex; gap:10px} .grow{flex:1}
+    .hero{padding:40px 18px 22px}
+    .hero .box{
+      background:linear-gradient(135deg, rgba(124,251,222,.06), rgba(139,92,246,.06));
+      border:1px solid rgba(124,251,222,.18);
+      border-radius:var(--radius); padding:28px; box-shadow:var(--shadow);
+    }
+    .hero h1{margin:0 0 6px; font-size:clamp(28px,5vw,44px)}
+    .hero p{margin:0; color:var(--muted)}
 
-    .drop{margin-top:14px; padding:18px; border:1px dashed rgba(255,255,255,.15); border-radius:var(--radius);
-      background:linear-gradient(180deg, rgba(167,139,250,.06), rgba(34,211,238,.06)); text-align:center; color:var(--muted);} 
-    .drop.dragover{ border-color: var(--accent); background: rgba(34,211,238,.12); color:var(--text) }
+    .cta{
+      margin:26px 0 8px; display:flex; flex-wrap:wrap; gap:12px; align-items:center
+    }
+    .cta .note{color:var(--muted)}
+    .cta .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:12px 18px; border-radius:14px; font-weight:700; 
+      background:linear-gradient(135deg, var(--brand), #b4ffe5);
+      color:#0b0b0f; border:none; cursor:pointer; text-decoration:none;
+      box-shadow:0 10px 25px rgba(124,251,222,.25), 0 0 0 2px rgba(124,251,222,.25) inset;
+      transition: transform .08s ease;
+    }
+    .cta .btn:active{ transform: translateY(1px) }
 
-    /* Secciones */
-    .section{ margin-top:26px; }
-    .sec-hd{ display:flex; align-items:center; justify-content:space-between; margin:4px 2px 10px; }
-    .sec-title{ font-size:1rem; font-weight:800; letter-spacing:.3px; display:flex; gap:8px; align-items:center }
-    .sec-count{ font-size:.78rem; color:var(--muted); border:1px solid rgba(255,255,255,.12); padding:2px 8px; border-radius:999px }
-    .sec-tools{ display:flex; gap:8px; align-items:center }
+    .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:16px; margin:24px 0}
+    .card{
+      background:var(--card); border:1px solid rgba(124,251,222,.18); border-radius:var(--radius);
+      box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column
+    }
+    .card header{position:initial; backdrop-filter:none; background:transparent; border:none}
+    .card h3{margin:16px; font-size:18px}
+    .card .content{padding:0 16px 16px}
+    .card .desc{color:var(--muted); margin:0 16px 12px}
 
-    /* Grid */
-    .sec-grid{ display:grid; gap:16px; grid-template-columns: repeat(1, minmax(0,1fr)); }
-    @media(min-width:560px){ .sec-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
-    @media(min-width:980px){ .sec-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+    details.section{background:transparent; border-top:1px dashed rgba(124,251,222,.25)}
+    details[open] > summary .chev{transform:rotate(90deg)}
+    summary{
+      list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between;
+      padding:16px; gap:12px; font-weight:700; letter-spacing:.3px
+    }
+    summary::-webkit-details-marker{display:none}
+    .chev{transition:transform .18s ease}
 
-    .card{ background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.08);
-      border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); position:relative; display:flex; flex-direction:column; min-height:240px; }
-    .thumb{ position:relative; aspect-ratio:16/9; background:#0d0f16 }
-    .thumb img{ width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.05) contrast(1.02) }
-    .play{ position:absolute; inset:auto auto 10px 10px; background:rgba(0,0,0,.6); padding:8px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.08); font-weight:800; letter-spacing:.2px; cursor:pointer }
-    .title{ padding:12px 14px 2px; font-weight:800; font-size:.98rem }
-    .meta{ padding:0 14px 12px; color:var(--muted); font-size:.85rem }
-    .card:hover{ outline:1px solid rgba(34,211,238,.25) }
+    .video-list{display:grid; gap:12px}
+    .video-embed{aspect-ratio:16/9; width:100%; border:0; border-radius:12px}
 
-    .actions{ position:absolute; top:8px; right:8px; display:flex; gap:8px }
-    .iconbtn{ background:rgba(0,0,0,.58); border:1px solid rgba(255,255,255,.1); color:var(--text); padding:6px 8px; border-radius:12px; cursor:pointer; font-size:.9rem }
-    .iconbtn:hover{ background:rgba(0,0,0,.75) }
+    .panel{background:var(--panel); border:1px solid rgba(124,251,222,.2); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
+    .panel h2{margin:0 0 8px}
+    .row-fields{display:grid; gap:12px; grid-template-columns:1fr}
+    .row-2{display:grid; gap:12px; grid-template-columns:1fr 1fr}
+    .input, textarea{
+      width:100%; background:#0f0f16; color:var(--text); border:1px solid rgba(124,251,222,.25);
+      border-radius:12px; padding:12px 12px; outline:none
+    }
+    textarea{min-height:90px; resize:vertical}
+    .small{font-size:12px; color:var(--muted)}
+    .actions{display:flex; gap:10px; flex-wrap:wrap}
+    .btn-ghost{background:transparent; border:1px dashed rgba(124,251,222,.35); color:var(--text); border-radius:12px; padding:10px 14px; cursor:pointer}
+    .btn-ok{background:linear-gradient(135deg, #22c55e, #a7f3d0); color:#08210f; border:none; border-radius:12px; padding:10px 14px; font-weight:700; cursor:pointer}
+    .btn-danger{background:linear-gradient(135deg, #ef4444, #fecaca); color:#280808; border:none; border-radius:12px; padding:10px 14px; font-weight:700; cursor:pointer}
 
-    .card[draggable="true"]{ cursor:grab }
-    .drag-shadow{ outline:2px dashed var(--accent); outline-offset: -6px }
+    .login{display:none; gap:10px; align-items:center}
+    .login.show{display:flex}
 
-    /* Modal */
-    .modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(3,6,12,.85); z-index:100; padding:18px }
-    .modal.open{ display:flex }
-    .modal-inner{ width:min(100%, 960px); background:#000; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.08) }
-    .modal-hd{ display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:#0a0a0a; color:#d6d7e0 }
-    .modal-iframe{ position:relative; width:100%; aspect-ratio:16/9; background:#000 }
-    .close{ cursor:pointer; opacity:.85 }
+    footer{padding:24px 18px 60px; color:var(--muted); text-align:center}
+    .pill{display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; background:rgba(124,251,222,.08); border:1px solid rgba(124,251,222,.25)}
 
-    /* Overlay de control: evita clics al iframe */
-    .overlay{ position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:space-between; pointer-events:auto; }
-    .shield{ position:absolute; inset:0; pointer-events:auto; }
-    .controls{ position:relative; z-index:2; width:100%; display:flex; gap:10px; align-items:center; justify-content:flex-start; padding:10px; background:linear-gradient(180deg, transparent, rgba(0,0,0,.6)); }
-    .ctrlbtn{ background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.15); color:#fff; padding:8px 10px; border-radius:10px; font-weight:800; cursor:pointer }
-    .ctrlbtn:hover{ background:rgba(255,255,255,.2) }
-
-    /* Admin */
-    .admin-only{ display:none }
-    .admin-on .admin-only{ display:initial }
-    .admin-card{ margin-top:16px; padding:14px; border:1px solid rgba(255,255,255,.08); border-radius:16px; background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02)); }
-    .admin-grid{ display:grid; gap:10px; grid-template-columns: 1.2fr .9fr auto auto; }
-    @media(max-width:820px){ .admin-grid{ grid-template-columns: 1fr; } }
-
-    /* CTA final */
-    .cta{ margin:34px auto 24px; }
-    .cta-card{ border:1px solid rgba(255,255,255,.08); background:linear-gradient(120deg, rgba(167,139,250,.08), rgba(34,211,238,.08)); padding:18px; border-radius:18px; box-shadow:var(--shadow); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px }
-    .cta-text{ font-size:1rem }
-    .btn-cta{ font-size:1rem; padding:12px 16px }
-
+    /* mobile tweaks */
+    @media (max-width:560px){
+      .cta{flex-direction:column; align-items:stretch}
+    }
   </style>
-  <meta name="theme-color" content="#0b0b0f" />
-  <meta property="og:title" content="CURSO BASICO DE CANVA" />
-  <meta property="og:description" content="Galería de videos por secciones. Usuarios sólo visualizan; admin gestiona." />
-  </head>
+</head>
 <body>
-  <noscript style="display:block; padding:12px; background:#111827; color:#e5e7eb; text-align:center;">Para usar este sitio necesitas habilitar JavaScript.</noscript>
   <header>
-    <div class="container header-wrap">
-      <div>
-        <h1>CURSO BASICO DE CANVA</h1>
-        <div class="sub">Galería de recursos en video • Usuarios sólo ven • <b>Sin salidas a YouTube</b></div>
-      </div>
-      <div style="display:flex; gap:8px; align-items:center;">
-        <div id="badgeAuto" class="badge" title="Fuente de datos">
-          <span style="width:8px; height:8px; border-radius:999px; background:var(--ok);"></span>
-          <span id="dataSource">videos.json</span>
+    <div class="wrap row">
+      <div class="title">CURSO BÁSICO DE CANVA</div>
+      <div class="actions">
+        <button id="adminToggle" class="admin-btn" title="Entrar a modo administrador" aria-label="Modo administrador">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 17a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" fill="currentColor"/><path d="M19.4 15a7.5 7.5 0 0 0 .1-1 7.5 7.5 0 0 0-.1-1l2.1-1.6a.5.5 0 0 0 .1-.6l-2-3.5a.5.5 0 0 0-.6-.2l-2.5 1a7.7 7.7 0 0 0-1.7-1l-.4-2.7a.5.5 0 0 0-.5-.4H9.7a.5.5 0 0 0-.5.4l-.4 2.7a7.7 7.7 0 0 0-1.7 1l-2.5-1a.5.5 0 0 0-.6.2l-2 3.5a.5.5 0 0 0 .1.6L2.2 13a7.5 7.5 0 0 0-.1 1 7.5 7.5 0 0 0 .1 1l-2.1 1.6a.5.5 0 0 0-.1.6l2 3.5a.5.5 0 0 0 .6.2l2.5-1a7.7 7.7 0 0 0 1.7 1l.4 2.7a.5.5 0 0 0 .5.4h4.6a.5.5 0 0 0 .5-.4l.4-2.7a7.7 7.7 0 0 0 1.7-1l2.5 1a.5.5 0 0 0 .6-.2l2-3.5a.5.5 0 0 0-.1-.6L19.4 15Z" fill="currentColor"/></svg>
+          Admin
+        </button>
+        <div id="login" class="login" aria-live="polite">
+          <input id="pwd" class="input" type="password" placeholder="Contraseña" aria-label="Contraseña de administrador" />
+          <button id="enter" class="btn-ok">Entrar</button>
+          <button id="cancelLogin" class="btn-ghost">Cancelar</button>
         </div>
       </div>
     </div>
   </header>
 
-  <main class="container">
-    <!-- Búsqueda pública -->
-    <div style="margin:12px 0; display:flex; gap:10px;">
-      <input id="searchPublic" class="input grow" placeholder="Buscar… (título o ID)" aria-label="Buscar videos"/>
-      <button id="adminToggle" class="btn btn-ghost" aria-controls="adminPanel" aria-expanded="false">Administrador</button>
-<small class="sub" id="adminHelp" style="margin-left:8px;">Tip: abre <code>#admin</code> para mostrar el panel (Ctrl+Alt+A)</small>
-    </div>
-
-    <!-- Panel de administrador (oculto por defecto) -->
-    <section id="adminPanel" class="admin-card admin-only">
-      <div class="row" style="justify-content:space-between; align-items:center; margin-bottom:8px;">
-        <strong>Panel de administrador</strong>
-        <div class="badge admin-only" id="adminBadge"><span style="width:8px; height:8px; border-radius:999px; background:var(--accent);"></span><span>Admin</span></div>
-      </div>
-      <!-- Login -->
-      <div class="row" id="adminLoginRow">
-        <input id="adminPass" class="input grow" type="password" placeholder="Clave de administrador" aria-label="Clave de administrador"/>
-        <button id="loginAdmin" class="btn btn-accent">Entrar</button>
-      </div>
-
-      <!-- Controles al estar logueado -->
-      <div id="adminControls" style="margin-top:12px; display:none;">
-        <!-- Gestor de secciones -->
-        <div class="admin-grid" style="margin-bottom:12px;">
-          <input id="newSectionName" class="input" placeholder="Nombre de nueva sección (ej. Introducción)" aria-label="Nombre de nueva sección"/>
-          <select id="defaultSection" title="Sección por defecto de nuevos videos" aria-label="Sección por defecto"></select>
-          <button id="addSectionBtn" class="btn btn-ghost">Agregar sección</button>
-          <button id="logoutAdmin" class="btn btn-danger">Salir</button>
+  <main class="wrap">
+    <section class="hero">
+      <div class="box">
+        <h1>Bienvenido/a al <span style="color:var(--brand)">Curso Básico de Canva</span></h1>
+        <p>Aprende a crear diseños impactantes paso a paso. Explora las secciones de introducción, las partes básicas y avanza a tu ritmo.</p>
+        <div class="cta">
+          <span class="note">Si deseas adquirir Canva, consulta con un asesor haciendo clic en este botón</span>
+          <a class="btn" href="https://walink.co/70069f" target="_blank" rel="noopener" aria-label="Abrir WhatsApp para adquirir Canva">Quiero adquirir Canva</a>
         </div>
-
-        <!-- Añadir videos -->
-        <div class="row" style="gap:10px;">
-          <input id="urlInput" class="input grow" placeholder="Pega 1 o más enlaces de YouTube (separados por espacio o salto de línea)" aria-label="Pegar enlaces de YouTube"/>
-          <button id="addBtn" class="btn btn-accent">Añadir</button>
-          <button id="exportBtn" class="btn btn-ghost">Exportar</button>
-          <button id="copySeedBtn" class="btn btn-ghost" title="Copia el JSON para pegarlo en el seed del index.html">Copiar seed</button>
-          <label class="btn btn-ghost" style="display:inline-flex; align-items:center; gap:8px; cursor:pointer">Importar <input id="importFile" type="file" accept="application/json" style="display:none" /></label>
-        </div>
-        <div id="drop" class="drop">Arrastra aquí enlaces de YouTube (solo admin)</div>
       </div>
     </section>
 
-    <!-- Secciones y videos -->
-    <div id="sectionsWrap"></div>
+    <!-- Contenedor de secciones renderizadas -->
+    <section id="sections" class="grid" aria-live="polite"></section>
 
-    <!-- CTA final -->
-    <section class="cta">
-      <div class="cta-card">
-        <div class="cta-text">Si deseas adquirir Canva, consulta con un asesor haciendo clic en este botón.</div>
-        <a class="btn btn-accent btn-cta" href="https://walink.co/70069f" target="_blank" rel="noopener noreferrer nofollow">Quiero adquirir Canva</a>
+    <!-- Panel de administración (se muestra solo en modo admin) -->
+    <section id="adminPanel" class="panel" style="display:none; margin-top:28px;">
+      <h2>Modo Administrador</h2>
+      <p class="small">Agrega nuevas secciones y videos. Todo se guarda en tu navegador (localStorage). Ideal para pruebas rápidas; para producción considera conectar una base de datos.</p>
+
+      <div class="row-fields" style="margin-top:10px">
+        <input id="sectionTitle" class="input" placeholder="Título de la sección (p. ej., Introducción, Parte Básica)" />
+        <textarea id="sectionDesc" class="input" placeholder="Descripción opcional de la sección"></textarea>
+        <input id="sectionVideos" class="input" placeholder="URLs de videos (separadas por coma). Soporta YouTube; se incrustan automáticamente." />
+        <div class="actions">
+          <button id="addSection" class="btn-ok">Agregar sección</button>
+          <button id="exportData" class="btn-ghost" title="Exportar JSON">Exportar</button>
+          <button id="importData" class="btn-ghost" title="Importar JSON">Importar</button>
+          <button id="resetAll" class="btn-danger" title="Borrar todo">Borrar todo</button>
+          <button id="logout" class="btn-ghost">Salir de admin</button>
+        </div>
+        <p class="small">Sugerencia: Puedes empezar con dos secciones: “Introducción” (3 videos) y “Parte básica” (4 videos). Después, agrega más según tu plan.</p>
       </div>
     </section>
-    <!-- Seed opcional embebido en el propio index (si NO quieres subir videos.json).
-       Edita el contenido entre llaves con tus secciones e items. -->
-  <script id="seedData" type="application/json">
-  {
-    \"sections\": [
-      { \"id\": \"introduccion\", \"name\": \"Introducción\", \"order\": 0 },
-      { \"id\": \"basico\", \"name\": \"Básico\", \"order\": 1 }
-    ],
-    \"items\": [
-      {
-        \"id\": \"dQw4w9WgXcQ\",
-        \"url\": \"https://www.youtube.com/watch?v=dQw4w9WgXcQ\",
-        \"title\": \"Bienvenida\",
-        \"section\": \"introduccion\",
-        \"addedAt\": 1710000000000
-      }
-    ]
-  }
-  </script>
-</main>
+  </main>
 
-  <!-- Modal -->
-  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Reproductor de video">
-    <div class="modal-inner">
-      <div class="modal-hd">
-        <div id="modalTitle" style="font-weight:800"></div>
-        <div class="close" id="closeModal" role="button" tabindex="0" aria-label="Cerrar">✕</div>
-      </div>
-      <div class="modal-iframe" id="modalFrame">
-        <!-- Iframe sin clics; controlado por overlay -->
-        <iframe id="player" style="width:100%; height:100%; pointer-events:none" src="" title="YouTube video" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <div class="overlay" oncontextmenu="return false;">
-          <div class="shield"></div>
-          <div class="controls">
-            <button id="playBtn" class="ctrlbtn" aria-label="Reproducir">▶ Reproducir</button>
-            <button id="pauseBtn" class="ctrlbtn" aria-label="Pausar">⏸ Pausar</button>
-            <button id="muteBtn" class="ctrlbtn" aria-label="Silenciar">🔇 Silencio</button>
-            <button id="unmuteBtn" class="ctrlbtn" aria-label="Activar sonido">🔊 Sonido</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <footer>
+    <span class="pill">⚡ Hecho con ❤️ para tu curso de Canva</span>
+  </footer>
 
   <script>
-    /*
-      Modo visualización por defecto (usuarios no pueden abrir YouTube ni añadir).
-      Admin: desbloquea añadir, reordenar y gestionar secciones.
-      Fuente de datos central: 'videos.json' (mismo repo).
-      IMPORTANTE: La contraseña vive en el frontend (visible en código). Para control real, usa backend.
-    */
+    const PASSWORD = "a@97030625"; // *Clave solicitada*
+    const STORAGE_KEY = "curso_canva_sections_v1";
 
-    const CONFIG = {
-      DATA_URL: 'videos.json',
-      ADMIN_PASS: 'a@97030625', // <- solicitada
+    // Estado en memoria
+    let isAdmin = false;
+    let sections = [];
+
+    // Elementos
+    const loginBox = document.getElementById('login');
+    const adminToggle = document.getElementById('adminToggle');
+    const enterBtn = document.getElementById('enter');
+    const cancelLoginBtn = document.getElementById('cancelLogin');
+    const pwdInput = document.getElementById('pwd');
+
+    const adminPanel = document.getElementById('adminPanel');
+    const sectionsWrap = document.getElementById('sections');
+
+    const sectionTitle = document.getElementById('sectionTitle');
+    const sectionDesc = document.getElementById('sectionDesc');
+    const sectionVideos = document.getElementById('sectionVideos');
+    const addSectionBtn = document.getElementById('addSection');
+    const exportBtn = document.getElementById('exportData');
+    const importBtn = document.getElementById('importData');
+    const resetBtn = document.getElementById('resetAll');
+    const logoutBtn = document.getElementById('logout');
+
+    // Utilidades
+    const save = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(sections));
+    const load = () => {
+      try{ const raw = localStorage.getItem(STORAGE_KEY); sections = raw ? JSON.parse(raw) : []; }
+      catch{ sections = []; }
     };
 
-    const $ = sel => document.querySelector(sel);
-    const wrap = $('#sectionsWrap');
-    const toast = $('#toast');
-    const root = document.body;
-
-    let isAdmin = false;
-    let items = [];      // [{id, url, title, section, addedAt}]
-    let sections = [];   // [{id, name, order}]
-
-    function showToast(msg, ms=2400){
-      toast.textContent = msg; toast.classList.add('show');
-      clearTimeout(showToast._t); showToast._t = setTimeout(()=>toast.classList.remove('show'), ms);
-    }
-
-    function slugify(name){ return String(name||'').toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') || 'seccion'; }
-
-    // ---- YouTube utils ----
-    function getYouTubeId(input){
-      if(!input) return null; const str = String(input).trim();
-      if(/^[a-zA-Z0-9_-]{11}$/.test(str)) return str;
+    const ytIdFromUrl = (url) => {
       try{
-        const url = new URL(str);
-        if(url.hostname.includes('youtu.be')){
-          const id = url.pathname.split('/').filter(Boolean)[0]; return /^[\w-]{11}$/.test(id) ? id : null;
+        const u = new URL(url);
+        if (u.hostname.includes('youtu.be')) return u.pathname.slice(1);
+        if (u.hostname.includes('youtube.com')){
+          if (u.searchParams.get('v')) return u.searchParams.get('v');
+          const parts = u.pathname.split('/');
+          const idx = parts.indexOf('embed');
+          if (idx !== -1 && parts[idx+1]) return parts[idx+1];
         }
-        if(url.hostname.includes('youtube.com')){
-          const v = url.searchParams.get('v'); if(v && /^[\w-]{11}$/.test(v)) return v;
-          const parts = url.pathname.split('/').filter(Boolean); const i = parts.indexOf('shorts'); if(i>=0 && parts[i+1] && /^[\w-]{11}$/.test(parts[i+1])) return parts[i+1];
-        }
-      }catch(e){}
+      }catch{}
       return null;
-    }
-    async function fetchYouTubeTitle(url){
-      try{ const o = new URL('https://www.youtube.com/oembed'); o.searchParams.set('format','json'); o.searchParams.set('url', url);
-        const res = await fetch(o.href, { mode:'cors' }); if(res.ok){ const data = await res.json(); return data.title || null; } }catch(e){}
-      try{ const n = new URL('https://noembed.com/embed'); n.searchParams.set('url', url); const res = await fetch(n.href); if(res.ok){ const data = await res.json(); return data.title || null; } }catch(e){}
-      return null;
-    }
-    function thumbUrl(id){ return `https://img.youtube.com/vi/${id}/hqdefault.jpg`; }
+    };
 
-    // ---- Render ----
-    function render(filter=''){
-      wrap.innerHTML = '';
-      const q = (filter||'').trim().toLowerCase();
-      const byId = Object.fromEntries(sections.map(s=>[s.id,s]));
-      const groups = sections.map(s=>({section:s, items:[]}));
+    const normalizeVideos = (str) => str
+        .split(',')
+        .map(s=>s.trim())
+        .filter(Boolean)
+        .map(url=>({ url }));
 
-      for(const it of items){
-        const matches = q ? ((it.title||'').toLowerCase().includes(q) || it.id.includes(q)) : true;
-        if(!matches) continue;
-        const secId = byId[it.section] ? it.section : sections[0]?.id; // default primera sección
-        const group = groups.find(g=>g.section.id===secId);
-        if(group) group.items.push(it);
+    function render(){
+      sectionsWrap.innerHTML = '';
+      if(!sections.length){
+        const empty = document.createElement('div');
+        empty.className = 'card';
+        empty.innerHTML = `
+          <h3 style="margin:16px;">Aún no hay secciones</h3>
+          <p class="desc">Inicia sesión como administrador para crear la primera sección del curso.</p>
+        `;
+        sectionsWrap.appendChild(empty);
+        return;
       }
 
-      for(const g of groups){
-        if(!g.items.length) continue;
-        const secEl = document.createElement('section'); secEl.className = 'section';
-        const hd = document.createElement('div'); hd.className = 'sec-hd';
-        const title = document.createElement('div'); title.className='sec-title'; title.innerHTML = `${g.section.name} <span class="sec-count">${g.items.length}</span>`;
-        hd.appendChild(title);
-        // Herramientas por sección (ocultas a público)
-        const tools = document.createElement('div'); tools.className='sec-tools admin-only';
-        const renameBtn = document.createElement('button'); renameBtn.className='btn btn-ghost'; renameBtn.textContent='Renombrar';
-        renameBtn.onclick = ()=>{
-          const nv = prompt('Nuevo nombre de sección', g.section.name);
-          if(nv && nv.trim()){ g.section.name = nv.trim(); saveLocal(); render(getSearchQuery()); }
-        };
-        const delBtn = document.createElement('button'); delBtn.className='btn btn-danger'; delBtn.textContent='Eliminar';
-        delBtn.onclick = ()=>{
-          if(!confirm('¿Eliminar sección? Los videos pasarán a la primera sección.')) return;
-          const first = sections[0]?.id; const toId = first===g.section.id ? (sections[1]?.id||first) : first;
-          items.forEach(v => { if(v.section===g.section.id) v.section = toId; });
-          sections = sections.filter(s=>s.id!==g.section.id); saveLocal(); render(getSearchQuery());
-        };
-        tools.appendChild(renameBtn); tools.appendChild(delBtn); hd.appendChild(tools);
+      sections.forEach((sec, idx) => {
+        const card = document.createElement('article');
+        card.className = 'card';
 
-        const grid = document.createElement('div'); grid.className = 'sec-grid'; grid.dataset.sec = g.section.id;
+        const header = document.createElement('header');
+        const sum = document.createElement('summary');
+        sum.innerHTML = `<span>${sec.title || 'Sección sin título'}</span> <span class="chev">▶</span>`;
 
-        for(const it of g.items){ grid.appendChild(buildCard(it, g.section.id)); }
+        const details = document.createElement('details');
+        details.className = 'section';
+        details.appendChild(sum);
 
-        secEl.appendChild(hd); secEl.appendChild(grid); wrap.appendChild(secEl);
-      }
-
-      // Si no hay nada que mostrar
-      if(!wrap.children.length){ const empty = document.createElement('div'); empty.className='drop'; empty.innerHTML='No hay videos para mostrar.'; wrap.appendChild(empty); }
-
-      // alterna clases admin
-      root.classList.toggle('admin-on', isAdmin);
-      $('#adminControls').style.display = isAdmin ? 'block' : 'none';
-      $('#adminLoginRow').style.display = isAdmin ? 'none' : 'flex';
-      $('#adminBadge').style.display = isAdmin ? 'inline-flex' : 'none';
-    }
-
-    function buildCard(it, secId){
-      const el = document.createElement('article'); el.className = 'card'; if(isAdmin) el.setAttribute('draggable','true'); el.dataset.id = it.id;
-      const th = document.createElement('div'); th.className = 'thumb';
-      const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(it.id); img.alt = it.title || it.id;
-      const play = document.createElement('button'); play.className = 'play'; play.textContent = '▶ Reproducir'; play.addEventListener('click', () => openModal(it));
-      th.appendChild(img); th.appendChild(play);
-
-      const actions = document.createElement('div'); actions.className = 'actions';
-      if(isAdmin){
-        const secSel = document.createElement('select'); secSel.className='iconbtn'; secSel.setAttribute('aria-label','Cambiar sección');
-        for(const s of sections){ const op = document.createElement('option'); op.value=s.id; op.textContent=s.name; if(s.id===it.section) op.selected = true; secSel.appendChild(op); }
-        secSel.onchange = ()=>{ it.section = secSel.value; saveLocal(); render(getSearchQuery()); };
-        actions.appendChild(secSel);
-        const delBtn = document.createElement('button'); delBtn.className='iconbtn'; delBtn.title='Eliminar'; delBtn.textContent='🗑'; delBtn.onclick = ()=> removeItem(it.id);
-        actions.appendChild(delBtn);
-      }
-
-      const t = document.createElement('div'); t.className='title'; t.textContent = it.title || 'Título no disponible';
-      const m = document.createElement('div'); m.className='meta'; m.innerHTML = `<span class="muted">ID:</span> ${it.id}`;
-
-      el.appendChild(th); el.appendChild(actions); el.appendChild(t); el.appendChild(m);
-
-      if(isAdmin){
-        el.addEventListener('dragstart', ev => { el.classList.add('drag-shadow'); ev.dataTransfer.setData('text/plain', JSON.stringify({id:it.id, sec:secId})); ev.dataTransfer.effectAllowed = 'move'; });
-        el.addEventListener('dragend', () => el.classList.remove('drag-shadow'));
-        el.addEventListener('dragover', ev => { ev.preventDefault(); ev.dataTransfer.dropEffect='move'; });
-        el.addEventListener('drop', ev => {
-          ev.preventDefault(); const data = ev.dataTransfer.getData('text/plain'); if(!data) return; const {id:fromId, sec:fromSec} = JSON.parse(data||'{}'); if(!fromId) return;
-          const toId = it.id; const toSec = secId; if(fromSec!==toSec){ return; } // reordenar sólo dentro de la misma sección
-          const a = items.findIndex(x=>x.id===fromId); const b = items.findIndex(x=>x.id===toId); if(a<0 || b<0) return;
-          const [moved] = items.splice(a,1); items.splice(b,0,moved); saveLocal(); render(getSearchQuery());
-        });
-      }
-      return el;
-    }
-
-    function removeItem(id){ if(!isAdmin) return; const idx = items.findIndex(x=>x.id===id); if(idx>=0){ items.splice(idx,1); saveLocal(); render(getSearchQuery()); showToast('Video eliminado'); } }
-
-    // ---- Player con overlay ----
-    const modal = $('#modal'); const player = $('#player'); const modalTitle = $('#modalTitle');
-    const playBtn = $('#playBtn'); const pauseBtn = $('#pauseBtn'); const muteBtn = $('#muteBtn'); const unmuteBtn = $('#unmuteBtn');
-    $('#closeModal').addEventListener('click', closeModal); $('#closeModal').addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') closeModal(); });
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape' && modal.classList.contains('open')) closeModal(); });
-
-    // Asegura autoplay (muted) en cuanto el iframe carga
-    player.addEventListener('load', ()=>{ ytCommand('mute'); ytCommand('playVideo'); });
-
-    function buildEmbedUrl(id){
-      const base = 'https://www.youtube-nocookie.com/embed/' + id;
-      const params = new URLSearchParams({ autoplay:'1', mute:'1', controls:'0', rel:'0', modestbranding:'1', iv_load_policy:'3', disablekb:'1', playsinline:'1', fs:'0', enablejsapi:'1', origin: location.origin });
-      return `${base}?${params.toString()}`;
-    });
-      return `${base}?${params.toString()}`;
-    }
-    function ytCommand(func, args=[]) { try{ player.contentWindow.postMessage(JSON.stringify({ event:'command', func, args }), '*'); }catch(e){} }
-    function openModal(item){
-      modalTitle.textContent = item.title || 'Video';
-      player.src = buildEmbedUrl(item.id);
-      modal.classList.add('open'); document.body.classList.add('no-scroll');
-      // intentos para forzar autoplay en navegadores estrictos
-      const kicks = [0, 300, 900];
-      kicks.forEach((t)=> setTimeout(()=>{ ytCommand('mute'); ytCommand('playVideo'); }, t));
-    }
-    function closeModal(){ player.src=''; modal.classList.remove('open'); document.body.classList.remove('no-scroll'); }
-    playBtn.onclick = ()=> ytCommand('playVideo');
-    pauseBtn.onclick = ()=> ytCommand('pauseVideo');
-    muteBtn.onclick = ()=> ytCommand('mute');
-    unmuteBtn.onclick = ()=> ytCommand('unMute');
-
-    // ---- Admin controls ----
-    function toggleAdminPanel(open){
-      const panel = document.getElementById('adminPanel');
-      const closing = (open===false);
-      if(closing){ panel.classList.add('admin-only'); }
-      else { panel.classList.remove('admin-only'); }
-      const expanded = panel.classList.contains('admin-only') ? 'false' : 'true';
-      document.getElementById('adminToggle').setAttribute('aria-expanded', expanded);
-      if(expanded==='true'){ setTimeout(()=> document.getElementById('adminPass')?.focus(), 50); }
-    }
-
-    $('#adminToggle').onclick = ()=> { const p = document.getElementById('adminPanel'); const willOpen = p.classList.contains('admin-only'); toggleAdminPanel(willOpen); } panel.classList.toggle('admin-only'); const expanded = panel.classList.contains('admin-only') ? 'false' : 'true'; document.getElementById('adminToggle').setAttribute('aria-expanded', expanded); };
-    $('#loginAdmin').onclick = doAdminLogin;
-    $('#adminPass').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); doAdminLogin(); }});
-
-    function doAdminLogin(){
-      const p = $('#adminPass').value;
-      if(p && p===CONFIG.ADMIN_PASS){
-        isAdmin = true; $('#adminPass').value=''; showToast('Modo administrador activo');
-        render(getSearchQuery()); refreshSectionSelects();
-      } else { showToast('Clave incorrecta'); }
-    } else { showToast('Clave incorrecta'); }}
-
-    $('#logoutAdmin').onclick = ()=>{ isAdmin = false; showToast('Sesión de administrador cerrada'); render(getSearchQuery()); };
-
-    $('#addBtn').onclick = ()=> addUrls($('#urlInput').value).then(()=> $('#urlInput').value='');
-    $('#urlInput').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); $('#addBtn').click(); }});
-
-    // Secciones
-    function ensureDefaultSection(){ if(!sections.length){ sections = [{ id:'general', name:'General', order:0 }]; } }
-    function addSection(name){ const n = (name||'').trim(); if(!n) return; const id = slugify(n); if(sections.some(s=>s.id===id)) { showToast('La sección ya existe'); return; } sections.push({id, name:n, order: sections.length}); saveLocal(); render(getSearchQuery()); refreshSectionSelects(); }
-    function refreshSectionSelects(){ const sel = $('#defaultSection'); if(!sel) return; const prev = sel.value; sel.innerHTML=''; for(const s of sections){ const op = document.createElement('option'); op.value=s.id; op.textContent=s.name; sel.appendChild(op); } sel.value = prev && sections.some(s=>s.id===prev) ? prev : sections[0]?.id; }
-
-    $('#addSectionBtn').onclick = ()=>{ const name = $('#newSectionName').value; addSection(name); $('#newSectionName').value=''; };
-
-    // Añadir URLs
-    async function addUrls(raw){
-      if(!isAdmin || !raw) return; const parts = String(raw).split(/\s+/).map(s=>s.trim()).filter(Boolean); if(!parts.length) return;
-      const defSec = $('#defaultSection').value || sections[0]?.id;
-      let added = 0, skipped = 0;
-      for(const p of parts){ const id = getYouTubeId(p); if(!id){ skipped++; continue; } if(items.some(x=>x.id===id)){ skipped++; continue; }
-        const url = `https://www.youtube.com/watch?v=${id}`; let title = await fetchYouTubeTitle(url);
-        items.push({ id, url, title, section: defSec, addedAt: Date.now() }); added++; }
-      saveLocal(); render(getSearchQuery()); if(added) showToast(`Añadidos ${added} video(s)`); if(skipped) showToast(`Omitidos ${skipped}`, 2600);
-    }
-
-    // Exportar / Importar
-    $('#exportBtn').addEventListener('click', () => { if(!isAdmin) return; const payload = { sections, items }; const data = JSON.stringify(payload, null, 2); const blob = new Blob([data], {type:'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'videos.json'; a.click(); URL.revokeObjectURL(a.href); });
-    $('#importFile').addEventListener('change', async (e)=>{ if(!isAdmin) return; const f = e.target.files?.[0]; if(!f) return; const text = await f.text(); let obj; try{ obj = JSON.parse(text); }catch{ showToast('Archivo inválido'); return; }
-      if(Array.isArray(obj)){ // compatibilidad antigua
-        items = obj.map(o=> ({ ...o, section: o.section || sections[0]?.id || 'general' }));
-      } else if(obj && Array.isArray(obj.items)){
-        sections = Array.isArray(obj.sections) && obj.sections.length ? obj.sections : [{id:'general', name:'General', order:0}];
-        items = obj.items.map(o=> ({ ...o, section: o.section || sections[0].id }));
-      } else { showToast('Formato incorrecto'); return; }
-      saveLocal(); render(getSearchQuery()); refreshSectionSelects(); showToast('Importación completa'); e.target.value=''; });
-
-    // Búsqueda
-    function getSearchQuery(){ return $('#searchPublic')?.value || ''; }
-    $('#searchPublic').addEventListener('input', (e)=> render(e.target.value||''));
-
-    // Drag & Drop admin (zona)
-    function attachDrops(){ const drop = document.getElementById('drop'); if(!drop) return; ['dragenter','dragover'].forEach(ev=> drop.addEventListener(ev, e=>{ if(!isAdmin) return; e.preventDefault(); drop.classList.add('dragover'); })); ['dragleave','drop'].forEach(ev=> drop.addEventListener(ev, e=>{ if(!isAdmin) return; if(ev==='drop'){ const dt=e.dataTransfer; const urlList=dt.getData('text/uri-list'); const plain=dt.getData('text/plain'); const text=[urlList,plain].filter(Boolean).join('\n'); if(text) addUrls(text); } drop.classList.remove('dragover'); })); }
-
-    // Persistencia local para admin
-    function saveLocal(){ if(!isAdmin) return; const payload = { sections, items }; localStorage.setItem('yt_gallery_payload_v1', JSON.stringify(payload)); }
-    function loadLocal(){ try{ const raw = localStorage.getItem('yt_gallery_payload_v1'); if(!raw) return false; const obj = JSON.parse(raw); if(obj && Array.isArray(obj.items)){ sections = Array.isArray(obj.sections)&&obj.sections.length? obj.sections : [{id:'general', name:'General', order:0}]; items = obj.items; return true; } }catch{} return false; }
-
-    // Carga principal
-    async function load(){
-      try{
-        const res = await fetch(CONFIG.DATA_URL, { cache:'no-store' });
-        if(res.ok){
-          const obj = await res.json();
-          if(Array.isArray(obj)){
-            sections = [{id:'general', name:'General', order:0}];
-            items = obj.map(o=> ({...o, section: o.section || 'general'}));
-          } else {
-            sections = Array.isArray(obj.sections)&&obj.sections.length? obj.sections : [{id:'general', name:'General', order:0}];
-            items = Array.isArray(obj.items)? obj.items : [];
-          }
-          document.getElementById('dataSource').textContent='videos.json';
-        } else { throw new Error('No disponible'); }
-      }catch(e){
-        // fallback local
-        if(loadLocal()){
-          document.getElementById('dataSource').textContent='localStorage';
-        } else if(loadSeed()){
-          document.getElementById('dataSource').textContent='seed';
-        } else {
-          sections = [{id:'general', name:'General', order:0}];
-          items = [];
-          document.getElementById('dataSource').textContent='vacío';
+        if (sec.desc){
+          const p = document.createElement('p');
+          p.className = 'desc';
+          p.textContent = sec.desc;
+          details.appendChild(p);
         }
-      }
-      ensureDefaultSection(); refreshSectionSelects(); render(''); attachDrops();
-    }
 
-    // Carga desde seed embebido en index
-    function loadSeed(){
-      const node = document.getElementById('seedData');
-      if(!node) return false;
-      try{
-        const txt = node.textContent || node.innerText || '';
-        if(!txt.trim()) return false;
-        const obj = JSON.parse(txt);
-        if(Array.isArray(obj)){
-          sections = [{id:'general', name:'General', order:0}];
-          items = obj.map(o=> ({...o, section: o.section || 'general'}));
-          return true;
-        } else if(obj && Array.isArray(obj.items)){
-          sections = Array.isArray(obj.sections)&&obj.sections.length? obj.sections : [{id:'general', name:'General', order:0}];
-          items = obj.items.map(o=> ({...o, section: o.section || sections[0].id }));
-          return true;
+        const list = document.createElement('div');
+        list.className = 'video-list content';
+
+        if(Array.isArray(sec.videos)){
+          sec.videos.forEach((v, vi) => {
+            const vidId = ytIdFromUrl(v.url);
+            const holder = document.createElement('div');
+            if(vidId){
+              holder.innerHTML = `<iframe class="video-embed" loading="lazy" src="https://www.youtube.com/embed/${vidId}" allowfullscreen title="Video ${vi+1} - ${sec.title}"></iframe>`;
+            }else{
+              holder.innerHTML = `<a href="${v.url}" target="_blank" rel="noopener">Abrir video ${vi+1}</a>`;
+            }
+
+            // Controles de admin para cada video
+            if(isAdmin){
+              const controls = document.createElement('div');
+              controls.className = 'actions';
+              controls.style.margin = '6px 0 14px';
+
+              const del = document.createElement('button');
+              del.className = 'btn-danger';
+              del.textContent = 'Eliminar video';
+              del.onclick = () => {
+                if(confirm('¿Eliminar este video?')){
+                  sec.videos.splice(vi,1); save(); render();
+                }
+              };
+
+              controls.appendChild(del);
+              holder.appendChild(controls);
+            }
+
+            list.appendChild(holder);
+          });
         }
-      }catch(err){ /* seed inválido */ }
-      return false;
+
+        // Controles de admin por sección
+        if(isAdmin){
+          const controls = document.createElement('div');
+          controls.className = 'actions';
+          controls.style.margin = '10px 16px 18px';
+
+          const addVid = document.createElement('button');
+          addVid.className = 'btn-ghost';
+          addVid.textContent = 'Agregar video a esta sección';
+          addVid.onclick = () => {
+            const url = prompt('Pega la URL del video (YouTube u otro).');
+            if(url){
+              sec.videos = sec.videos || [];
+              sec.videos.push({url});
+              save(); render();
+            }
+          };
+
+          const editSec = document.createElement('button');
+          editSec.className = 'btn-ghost';
+          editSec.textContent = 'Editar sección';
+          editSec.onclick = () => {
+            const newTitle = prompt('Nuevo título de sección:', sec.title || '');
+            if(newTitle===null) return;
+            const newDesc = prompt('Nueva descripción (opcional):', sec.desc || '');
+            sec.title = newTitle.trim();
+            sec.desc = (newDesc||'').trim();
+            save(); render();
+          };
+
+          const remove = document.createElement('button');
+          remove.className = 'btn-danger';
+          remove.textContent = 'Eliminar sección';
+          remove.onclick = () => {
+            if(confirm('¿Eliminar la sección completa?')){
+              sections.splice(idx,1); save(); render();
+            }
+          };
+
+          controls.append(addVid, editSec, remove);
+          list.appendChild(controls);
+        }
+
+        card.appendChild(details);
+        details.appendChild(list);
+        sectionsWrap.appendChild(card);
+      });
     }
 
-    // Copiar seed al portapapeles (admin)
-    document.getElementById('copySeedBtn')?.addEventListener('click', ()=>{
-      if(!isAdmin) return;
-      const payload = { sections, items };
-      const txt = JSON.stringify(payload, null, 2);
-      if(navigator.clipboard && window.isSecureContext){
-        navigator.clipboard.writeText(txt).then(()=> showToast('Seed copiado al portapapeles'));
-      } else {
-        const ta = document.createElement('textarea');
-        ta.value = txt; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
-        showToast('Seed copiado');
+    // Autenticación visual simple
+    function showLogin(show){ loginBox.classList.toggle('show', !!show); if(show){ pwdInput.focus(); } }
+    function setAdmin(on){
+      isAdmin = !!on;
+      adminPanel.style.display = isAdmin ? 'block' : 'none';
+      render();
+    }
+
+    adminToggle.addEventListener('click', ()=>{
+      if(isAdmin){
+        setAdmin(false);
+      }else{
+        showLogin(true);
       }
     });
 
-    // Init
+    enterBtn.addEventListener('click', ()=>{
+      if(pwdInput.value === PASSWORD){
+        showLogin(false); setAdmin(true); pwdInput.value='';
+      }else{
+        alert('Contraseña incorrecta');
+      }
+    });
+    cancelLoginBtn.addEventListener('click', ()=>{ showLogin(false); pwdInput.value=''; });
+    pwdInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter') enterBtn.click(); });
+
+    // Acciones del panel admin
+    addSectionBtn.addEventListener('click', ()=>{
+      const title = sectionTitle.value.trim();
+      const desc = sectionDesc.value.trim();
+      const vids = normalizeVideos(sectionVideos.value);
+      if(!title){ alert('Ponle un título a la sección.'); return; }
+      sections.push({ title, desc, videos: vids });
+      save(); render();
+      sectionTitle.value = ''; sectionDesc.value=''; sectionVideos.value='';
+    });
+
+    exportBtn.addEventListener('click', ()=>{
+      const blob = new Blob([JSON.stringify(sections, null, 2)], {type:'application/json'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'curso_canva_secciones.json'; a.click(); URL.revokeObjectURL(a.href);
+    });
+
+    importBtn.addEventListener('click', ()=>{
+      const inp = document.createElement('input'); inp.type='file'; inp.accept='.json,application/json';
+      inp.onchange = async (e)=>{
+        const file = e.target.files[0]; if(!file) return;
+        const text = await file.text();
+        try{
+          const data = JSON.parse(text);
+          if(Array.isArray(data)){
+            sections = data; save(); render();
+          }else{ alert('El JSON debe ser un arreglo de secciones.'); }
+        }catch(err){ alert('JSON inválido.'); }
+      };
+      inp.click();
+    });
+
+    resetBtn.addEventListener('click', ()=>{
+      if(confirm('¿Borrar todas las secciones guardadas?')){
+        sections = []; save(); render();
+      }
+    });
+
+    logoutBtn.addEventListener('click', ()=>{ setAdmin(false); });
+
+    // Inicializar
     load();
-
-    // Abrir panel admin por URL (#admin o ?admin=1)
-    try{
-      const qs = new URLSearchParams(location.search);
-      if(location.hash==='#admin' || qs.get('admin')==='1'){ toggleAdminPanel(true); }
-    }catch(_e){}
-
-    // Atajo de teclado Ctrl+Alt+A para abrir panel
-    document.addEventListener('keydown', (e)=>{
-      const key = e.key?.toLowerCase?.() || '';
-      if(e.ctrlKey && e.altKey && key==='a'){ e.preventDefault(); toggleAdminPanel(true); }
-    });
+    // Si no hay datos, sugerimos estructura base (sin videos) solo una vez
+    if(!sections.length){
+      sections = [
+        { title: 'Introducción', desc: 'Primera toma de contacto con Canva: qué es y cómo funciona.', videos: [] },
+        { title: 'Parte básica', desc: 'Herramientas esenciales y primeros diseños prácticos.', videos: [] }
+      ];
+      save();
+    }
+    render();
   </script>
 </body>
 </html>
-
