@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CURSO BASICO DE CANVA</title>
+  <meta name="description" content="Curso Básico de Canva: galería de recursos en video. Usuarios sólo ven y reproducen; el administrador agrega y organiza por secciones. Sin salidas a YouTube." />
+  <style>
+    :root{
+      --bg:#0b0b0f; --panel:#12121a; --card:#151520; --muted:#a9adc1; --text:#f2f3f7;
+      --accent:#22d3ee; --accent-2:#a78bfa; --ok:#34d399; --danger:#f43f5e; --shadow:0 10px 25px rgba(0,0,0,.45); --radius:18px;
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0; background:radial-gradient(1200px 800px at 80% -10%, #111628 0%, #0b0b0f 50%, #0b0b0f 100%);
+      color:var(--text); font-family: ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Arial; letter-spacing:.2px;}
+    .container{max-width:1100px; margin:0 auto; padding:20px}
+
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(1.2) blur(8px);
+      background:linear-gradient(180deg, rgba(17,17,23,.8), rgba(17,17,23,.45)); border-bottom:1px solid rgba(255,255,255,.06);} 
+    .header-wrap{display:flex; align-items:center; justify-content:space-between; gap:14px;}
+    h1{font-size:1.25rem; margin:0; font-weight:800; letter-spacing:.3px}
+    .sub{font-size:.9rem; color:var(--muted)}
+
+    .badge{ display:inline-flex; gap:6px; align-items:center; padding:6px 10px; border-radius:999px; font-size:.78rem; border:1px solid rgba(255,255,255,.09); background:rgba(255,255,255,.03) }
+
+    .toolbar{display:grid; gap:12px; grid-template-columns: 1fr; padding:12px 0}
+    @media(min-width:900px){ .toolbar{grid-template-columns: 1.1fr .7fr .7fr auto auto} }
+
+    .input, .btn, select{
+      border-radius:14px; border:1px solid rgba(255,255,255,.09); background:var(--panel); color:var(--text);
+      padding:12px 14px; outline:none; transition:.2s border-color, .2s transform; font-size:.95rem;
+    }
+    .input::placeholder{color:#8d93ad} .input:focus{border-color:var(--accent)}
+    .btn{ cursor:pointer; font-weight:800; } .btn:hover{ transform: translateY(-1px); }
+    .btn-accent{ background:linear-gradient(120deg, var(--accent), var(--accent-2)); border-color:transparent; color:#071018; }
+    .btn-ghost{ background:var(--panel) }
+    .btn-danger{ background:linear-gradient(120deg, #ef4444, #f43f5e); border-color:transparent; color:#fff }
+
+    .row{display:flex; gap:10px} .grow{flex:1}
+
+    .drop{margin-top:14px; padding:18px; border:1px dashed rgba(255,255,255,.15); border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(167,139,250,.06), rgba(34,211,238,.06)); text-align:center; color:var(--muted);} 
+    .drop.dragover{ border-color: var(--accent); background: rgba(34,211,238,.12); color:var(--text) }
+
+    /* Secciones */
+    .section{ margin-top:26px; }
+    .sec-hd{ display:flex; align-items:center; justify-content:space-between; margin:4px 2px 10px; }
+    .sec-title{ font-size:1rem; font-weight:800; letter-spacing:.3px }
+    .sec-tools{ display:flex; gap:8px; align-items:center }
+
+    /* Grid */
+    .sec-grid{ display:grid; gap:16px; grid-template-columns: repeat(1, minmax(0,1fr)); }
+    @media(min-width:560px){ .sec-grid{ grid-template-columns: repeat(2, minmax(0,1fr)); } }
+    @media(min-width:980px){ .sec-grid{ grid-template-columns: repeat(3, minmax(0,1fr)); } }
+
+    .card{ background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)); border:1px solid rgba(255,255,255,.08);
+      border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); position:relative; display:flex; flex-direction:column; min-height:240px; }
+    .thumb{ position:relative; aspect-ratio:16/9; background:#0d0f16 }
+    .thumb img{ width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.05) contrast(1.02) }
+    .play{ position:absolute; inset:auto auto 10px 10px; background:rgba(0,0,0,.6); padding:8px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.08); font-weight:800; letter-spacing:.2px; cursor:pointer }
+    .title{ padding:12px 14px 2px; font-weight:800; font-size:.98rem }
+    .meta{ padding:0 14px 12px; color:var(--muted); font-size:.85rem }
+    .card:hover{ outline:1px solid rgba(34,211,238,.25) }
+
+    .actions{ position:absolute; top:8px; right:8px; display:flex; gap:8px }
+    .iconbtn{ background:rgba(0,0,0,.58); border:1px solid rgba(255,255,255,.1); color:var(--text); padding:6px 8px; border-radius:12px; cursor:pointer; font-size:.9rem }
+    .iconbtn:hover{ background:rgba(0,0,0,.75) }
+
+    .card[draggable="true"]{ cursor:grab }
+    .drag-shadow{ outline:2px dashed var(--accent); outline-offset: -6px }
+
+    /* Modal */
+    .modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(3,6,12,.85); z-index:100; padding:18px }
+    .modal.open{ display:flex }
+    .modal-inner{ width:min(100%, 960px); background:#000; border-radius:16px; overflow:hidden; box-shadow:var(--shadow); border:1px solid rgba(255,255,255,.08) }
+    .modal-hd{ display:flex; justify-content:space-between; align-items:center; padding:10px 12px; background:#0a0a0a; color:#d6d7e0 }
+    .modal-iframe{ position:relative; width:100%; aspect-ratio:16/9; background:#000 }
+    .close{ cursor:pointer; opacity:.85 }
+
+    /* Overlay de control: evita clics al iframe */
+    .overlay{ position:absolute; inset:0; display:flex; align-items:flex-end; justify-content:space-between; pointer-events:auto; }
+    .shield{ position:absolute; inset:0; pointer-events:auto; }
+    .controls{ position:relative; z-index:2; width:100%; display:flex; gap:10px; align-items:center; justify-content:flex-start; padding:10px; background:linear-gradient(180deg, transparent, rgba(0,0,0,.6)); }
+    .ctrlbtn{ background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.15); color:#fff; padding:8px 10px; border-radius:10px; font-weight:800; cursor:pointer }
+    .ctrlbtn:hover{ background:rgba(255,255,255,.2) }
+
+    /* Admin */
+    .admin-only{ display:none }
+    .admin-on .admin-only{ display:initial }
+    .admin-card{ margin-top:16px; padding:14px; border:1px solid rgba(255,255,255,.08); border-radius:16px; background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.02)); }
+    .admin-grid{ display:grid; gap:10px; grid-template-columns: 1.2fr .9fr auto auto; }
+    @media(max-width:820px){ .admin-grid{ grid-template-columns: 1fr; } }
+
+    /* CTA final */
+    .cta{ margin:34px auto 24px; }
+    .cta-card{ border:1px solid rgba(255,255,255,.08); background:linear-gradient(120deg, rgba(167,139,250,.08), rgba(34,211,238,.08)); padding:18px; border-radius:18px; box-shadow:var(--shadow); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px }
+    .cta-text{ font-size:1rem }
+    .btn-cta{ font-size:1rem; padding:12px 16px }
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-wrap">
+      <div>
+        <h1>CURSO BASICO DE CANVA</h1>
+        <div class="sub">Galería de recursos en video • Usuarios sólo ven • <b>Sin salidas a YouTube</b></div>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <div id="badgeAuto" class="badge" title="Fuente de datos">
+          <span style="width:8px; height:8px; border-radius:999px; background:var(--ok);"></span>
+          <span id="dataSource">videos.json</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Búsqueda pública -->
+    <div style="margin:12px 0; display:flex; gap:10px;">
+      <input id="searchPublic" class="input grow" placeholder="Buscar… (título o ID)" />
+      <button id="adminToggle" class="btn btn-ghost">Administrador</button>
+    </div>
+
+    <!-- Panel de administrador (oculto por defecto) -->
+    <section id="adminPanel" class="admin-card admin-only">
+      <div class="row" style="justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <strong>Panel de administrador</strong>
+        <div class="badge admin-only" id="adminBadge"><span style="width:8px; height:8px; border-radius:999px; background:var(--accent);"></span><span>Admin</span></div>
+      </div>
+      <!-- Login -->
+      <div class="row" id="adminLoginRow">
+        <input id="adminPass" class="input grow" type="password" placeholder="Clave de administrador" />
+        <button id="loginAdmin" class="btn btn-accent">Entrar</button>
+      </div>
+
+      <!-- Controles al estar logueado -->
+      <div id="adminControls" style="margin-top:12px; display:none;">
+        <!-- Gestor de secciones -->
+        <div class="admin-grid" style="margin-bottom:12px;">
+          <input id="newSectionName" class="input" placeholder="Nombre de nueva sección (ej. Introducción)" />
+          <select id="defaultSection" title="Sección por defecto de nuevos videos"></select>
+          <button id="addSectionBtn" class="btn btn-ghost">Agregar sección</button>
+          <button id="logoutAdmin" class="btn btn-danger">Salir</button>
+        </div>
+
+        <!-- Añadir videos -->
+        <div class="row" style="gap:10px;">
+          <input id="urlInput" class="input grow" placeholder="Pega 1 o más enlaces de YouTube (separados por espacio o salto de línea)" />
+          <button id="addBtn" class="btn btn-accent">Añadir</button>
+          <button id="exportBtn" class="btn btn-ghost">Exportar</button>
+          <label class="btn btn-ghost" style="display:inline-flex; align-items:center; gap:8px; cursor:pointer">Importar <input id="importFile" type="file" accept="application/json" style="display:none" /></label>
+        </div>
+        <div id="drop" class="drop">Arrastra aquí enlaces de YouTube (solo admin)</div>
+      </div>
+    </section>
+
+    <!-- Secciones y videos -->
+    <div id="sectionsWrap"></div>
+
+    <!-- CTA final -->
+    <section class="cta">
+      <div class="cta-card">
+        <div class="cta-text">Si deseas adquirir Canva, consulta con un asesor haciendo clic en este botón.</div>
+        <a class="btn btn-accent btn-cta" href="https://walink.co/70069f" target="_blank" rel="noopener">Quiero adquirir Canva</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-label="Reproductor de video">
+    <div class="modal-inner">
+      <div class="modal-hd">
+        <div id="modalTitle" style="font-weight:800"></div>
+        <div class="close" id="closeModal">✕</div>
+      </div>
+      <div class="modal-iframe" id="modalFrame">
+        <!-- Iframe sin clics; controlado por overlay -->
+        <iframe id="player" style="width:100%; height:100%; pointer-events:none" src="" title="YouTube video" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="overlay" oncontextmenu="return false;">
+          <div class="shield"></div>
+          <div class="controls">
+            <button id="playBtn" class="ctrlbtn">▶ Reproducir</button>
+            <button id="pauseBtn" class="ctrlbtn">⏸ Pausar</button>
+            <button id="muteBtn" class="ctrlbtn">🔇 Silencio</button>
+            <button id="unmuteBtn" class="ctrlbtn">🔊 Sonido</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    /*\n      Modo visualización por defecto (usuarios no pueden abrir YouTube ni añadir).\n      Admin: desbloquea añadir, reordenar y gestionar secciones.\n      Fuente de datos central: 'videos.json' (mismo repo).\n      IMPORTANTE: Esta contraseña vive en el frontend (visible en código).\n      Para control real de acceso, se necesitaría backend.\n    */
+
+    const CONFIG = {
+      DATA_URL: 'videos.json',
+      ADMIN_PASS: 'a@97030625', // <- solicitada
+    };
+
+    const $ = sel => document.querySelector(sel);
+    const wrap = $('#sectionsWrap');
+    const toast = $('#toast');
+    const root = document.body;
+
+    let isAdmin = false;
+    let items = [];      // [{id, url, title, section, addedAt}]
+    let sections = [];   // [{id, name, order}]
+
+    function showToast(msg, ms=2400){
+      toast.textContent = msg; toast.classList.add('show');
+      clearTimeout(showToast._t); showToast._t = setTimeout(()=>toast.classList.remove('show'), ms);
+    }
+
+    function slugify(name){ return String(name||'').toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'') || 'seccion'; }
+
+    // ---- YouTube utils ----
+    function getYouTubeId(input){
+      if(!input) return null; const str = String(input).trim();
+      if(/^[a-zA-Z0-9_-]{11}$/.test(str)) return str;
+      try{
+        const url = new URL(str);
+        if(url.hostname.includes('youtu.be')){
+          const id = url.pathname.split('/').filter(Boolean)[0]; return /^[\w-]{11}$/.test(id) ? id : null;
+        }
+        if(url.hostname.includes('youtube.com')){
+          const v = url.searchParams.get('v'); if(v && /^[\w-]{11}$/.test(v)) return v;
+          const parts = url.pathname.split('/').filter(Boolean); const i = parts.indexOf('shorts'); if(i>=0 && parts[i+1] && /^[\w-]{11}$/.test(parts[i+1])) return parts[i+1];
+        }
+      }catch(e){}
+      return null;
+    }
+    async function fetchYouTubeTitle(url){
+      try{ const o = new URL('https://www.youtube.com/oembed'); o.searchParams.set('format','json'); o.searchParams.set('url', url);
+        const res = await fetch(o.href, { mode:'cors' }); if(res.ok){ const data = await res.json(); return data.title || null; } }catch(e){}
+      try{ const n = new URL('https://noembed.com/embed'); n.searchParams.set('url', url); const res = await fetch(n.href); if(res.ok){ const data = await res.json(); return data.title || null; } }catch(e){}
+      return null;
+    }
+    function thumbUrl(id){ return `https://img.youtube.com/vi/${id}/hqdefault.jpg`; }
+
+    // ---- Render ----
+    function render(filter=''){
+      wrap.innerHTML = '';
+      const q = (filter||'').trim().toLowerCase();
+      const byId = Object.fromEntries(sections.map(s=>[s.id,s]));
+      const groups = sections.map(s=>({section:s, items:[]}));
+
+      for(const it of items){
+        const matches = q ? ((it.title||'').toLowerCase().includes(q) || it.id.includes(q)) : true;
+        if(!matches) continue;
+        const secId = byId[it.section] ? it.section : sections[0]?.id; // default primera sección
+        const group = groups.find(g=>g.section.id===secId);
+        if(group) group.items.push(it);
+      }
+
+      for(const g of groups){
+        if(!g.items.length) continue;
+        const secEl = document.createElement('section'); secEl.className = 'section';
+        const hd = document.createElement('div'); hd.className = 'sec-hd';
+        const title = document.createElement('div'); title.className='sec-title'; title.textContent = g.section.name;
+        hd.appendChild(title);
+        // Herramientas por sección (ocultas a público)
+        const tools = document.createElement('div'); tools.className='sec-tools admin-only';
+        const renameBtn = document.createElement('button'); renameBtn.className='btn btn-ghost'; renameBtn.textContent='Renombrar';
+        renameBtn.onclick = ()=>{
+          const nv = prompt('Nuevo nombre de sección', g.section.name);
+          if(nv && nv.trim()){ g.section.name = nv.trim(); saveLocal(); render(getSearchQuery()); }
+        };
+        const delBtn = document.createElement('button'); delBtn.className='btn btn-danger'; delBtn.textContent='Eliminar';
+        delBtn.onclick = ()=>{
+          if(!confirm('¿Eliminar sección? Los videos pasarán a la primera sección.')) return;
+          const first = sections[0]?.id; const toId = first===g.section.id ? (sections[1]?.id||first) : first;
+          items.forEach(v => { if(v.section===g.section.id) v.section = toId; });
+          sections = sections.filter(s=>s.id!==g.section.id); saveLocal(); render(getSearchQuery());
+        };
+        tools.appendChild(renameBtn); tools.appendChild(delBtn); hd.appendChild(tools);
+
+        const grid = document.createElement('div'); grid.className = 'sec-grid'; grid.dataset.sec = g.section.id;
+
+        for(const it of g.items){ grid.appendChild(buildCard(it, g.section.id)); }
+
+        secEl.appendChild(hd); secEl.appendChild(grid); wrap.appendChild(secEl);
+      }
+
+      // Si no hay nada que mostrar
+      if(!wrap.children.length){ const empty = document.createElement('div'); empty.className='drop'; empty.innerHTML='No hay videos para mostrar.'; wrap.appendChild(empty); }
+
+      // alterna clases admin
+      root.classList.toggle('admin-on', isAdmin);
+      $('#adminControls').style.display = isAdmin ? 'block' : 'none';
+      $('#adminLoginRow').style.display = isAdmin ? 'none' : 'flex';
+      $('#adminBadge').style.display = isAdmin ? 'inline-flex' : 'none';
+    }
+
+    function buildCard(it, secId){
+      const el = document.createElement('article'); el.className = 'card'; if(isAdmin) el.setAttribute('draggable','true'); el.dataset.id = it.id;
+      const th = document.createElement('div'); th.className = 'thumb';
+      const img = document.createElement('img'); img.loading = 'lazy'; img.src = thumbUrl(it.id); img.alt = it.title || it.id;
+      const play = document.createElement('button'); play.className = 'play'; play.textContent = '▶ Reproducir'; play.addEventListener('click', () => openModal(it));
+      th.appendChild(img); th.appendChild(play);
+
+      const actions = document.createElement('div'); actions.className = 'actions';
+      if(isAdmin){
+        const secSel = document.createElement('select'); secSel.className='iconbtn';
+        for(const s of sections){ const op = document.createElement('option'); op.value=s.id; op.textContent=s.name; if(s.id===it.section) op.selected = true; secSel.appendChild(op); }
+        secSel.onchange = ()=>{ it.section = secSel.value; saveLocal(); render(getSearchQuery()); };
+        actions.appendChild(secSel);
+        const delBtn = document.createElement('button'); delBtn.className='iconbtn'; delBtn.title='Eliminar'; delBtn.textContent='🗑'; delBtn.onclick = ()=> removeItem(it.id);
+        actions.appendChild(delBtn);
+      }
+
+      const t = document.createElement('div'); t.className='title'; t.textContent = it.title || 'Título no disponible';
+      const m = document.createElement('div'); m.className='meta'; m.innerHTML = `<span class="muted">ID:</span> ${it.id}`;
+
+      el.appendChild(th); el.appendChild(actions); el.appendChild(t); el.appendChild(m);
+
+      if(isAdmin){
+        el.addEventListener('dragstart', ev => { el.classList.add('drag-shadow'); ev.dataTransfer.setData('text/plain', JSON.stringify({id:it.id, sec:secId})); ev.dataTransfer.effectAllowed = 'move'; });
+        el.addEventListener('dragend', () => el.classList.remove('drag-shadow'));
+        el.addEventListener('dragover', ev => { ev.preventDefault(); ev.dataTransfer.dropEffect='move'; });
+        el.addEventListener('drop', ev => {
+          ev.preventDefault(); const data = ev.dataTransfer.getData('text/plain'); if(!data) return; const {id:fromId, sec:fromSec} = JSON.parse(data||'{}'); if(!fromId) return;
+          const toId = it.id; const toSec = secId; if(fromSec!==toSec){ return; } // reordenar sólo dentro de la misma sección
+          const a = items.findIndex(x=>x.id===fromId); const b = items.findIndex(x=>x.id===toId); if(a<0 || b<0) return;
+          const [moved] = items.splice(a,1); items.splice(b,0,moved); saveLocal(); render(getSearchQuery());
+        });
+      }
+      return el;
+    }
+
+    function removeItem(id){ if(!isAdmin) return; const idx = items.findIndex(x=>x.id===id); if(idx>=0){ items.splice(idx,1); saveLocal(); render(getSearchQuery()); showToast('Video eliminado'); } }
+
+    // ---- Player con overlay ----
+    const modal = $('#modal'); const player = $('#player'); const modalTitle = $('#modalTitle');
+    const playBtn = $('#playBtn'); const pauseBtn = $('#pauseBtn'); const muteBtn = $('#muteBtn'); const unmuteBtn = $('#unmuteBtn');
+    $('#closeModal').addEventListener('click', closeModal); modal.addEventListener('click', e=>{ if(e.target===modal) closeModal(); });
+
+    function buildEmbedUrl(id){
+      const base = 'https://www.youtube-nocookie.com/embed/' + id;
+      const params = new URLSearchParams({ autoplay:'1', controls:'0', rel:'0', modestbranding:'1', iv_load_policy:'3', disablekb:'1', playsinline:'1', fs:'0', enablejsapi:'1', origin: location.origin });
+      return `${base}?${params.toString()}`;
+    }
+    function ytCommand(func, args=[]) { try{ player.contentWindow.postMessage(JSON.stringify({ event:'command', func, args }), '*'); }catch(e){} }
+    function openModal(item){ modalTitle.textContent = item.title || 'Video'; player.src = buildEmbedUrl(item.id); modal.classList.add('open'); setTimeout(()=> ytCommand('playVideo'), 350); }
+    function closeModal(){ player.src=''; modal.classList.remove('open'); }
+    playBtn.onclick = ()=> ytCommand('playVideo');
+    pauseBtn.onclick = ()=> ytCommand('pauseVideo');
+    muteBtn.onclick = ()=> ytCommand('mute');
+    unmuteBtn.onclick = ()=> ytCommand('unMute');
+
+    // ---- Admin controls ----
+    $('#adminToggle').onclick = ()=>{ document.getElementById('adminPanel').classList.toggle('admin-only'); };
+    $('#loginAdmin').onclick = ()=>{ const p = $('#adminPass').value; if(p && p===CONFIG.ADMIN_PASS){ isAdmin = true; showToast('Modo administrador activo'); render(getSearchQuery()); refreshSectionSelects(); } else { showToast('Clave incorrecta'); } };
+    $('#logoutAdmin').onclick = ()=>{ isAdmin = false; showToast('Sesión de administrador cerrada'); render(getSearchQuery()); };
+
+    $('#addBtn').onclick = ()=> addUrls($('#urlInput').value).then(()=> $('#urlInput').value='');
+    $('#urlInput').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); $('#addBtn').click(); }});
+
+    // Secciones
+    function ensureDefaultSection(){ if(!sections.length){ sections = [{ id:'general', name:'General', order:0 }]; } }
+    function addSection(name){ const n = name.trim(); if(!n) return; const id = slugify(n); if(sections.some(s=>s.id===id)) { showToast('La sección ya existe'); return; } sections.push({id, name:n, order: sections.length}); saveLocal(); render(getSearchQuery()); refreshSectionSelects(); }
+    function refreshSectionSelects(){ const sel = $('#defaultSection'); if(!sel) return; sel.innerHTML=''; for(const s of sections){ const op = document.createElement('option'); op.value=s.id; op.textContent=s.name; sel.appendChild(op); } }
+
+    $('#addSectionBtn').onclick = ()=>{ const name = $('#newSectionName').value; addSection(name); $('#newSectionName').value=''; };
+
+    // Añadir URLs
+    async function addUrls(raw){
+      if(!isAdmin || !raw) return; const parts = String(raw).split(/\s+/).map(s=>s.trim()).filter(Boolean); if(!parts.length) return;
+      const defSec = $('#defaultSection').value || sections[0]?.id;
+      let added = 0, skipped = 0;
+      for(const p of parts){ const id = getYouTubeId(p); if(!id){ skipped++; continue; } if(items.some(x=>x.id===id)){ skipped++; continue; }
+        const url = `https://www.youtube.com/watch?v=${id}`; let title = await fetchYouTubeTitle(url);
+        items.push({ id, url, title, section: defSec, addedAt: Date.now() }); added++; }
+      saveLocal(); render(getSearchQuery()); if(added) showToast(`Añadidos ${added} video(s)`); if(skipped) showToast(`Omitidos ${skipped}`, 2600);
+    }
+
+    // Exportar / Importar
+    $('#exportBtn').addEventListener('click', () => { if(!isAdmin) return; const payload = { sections, items }; const data = JSON.stringify(payload, null, 2); const blob = new Blob([data], {type:'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'videos.json'; a.click(); URL.revokeObjectURL(a.href); });
+    $('#importFile').addEventListener('change', async (e)=>{ if(!isAdmin) return; const f = e.target.files?.[0]; if(!f) return; const text = await f.text(); let obj; try{ obj = JSON.parse(text); }catch{ showToast('Archivo inválido'); return; }
+      if(Array.isArray(obj)){ // compatibilidad antigua
+        items = obj.map(o=> ({ ...o, section: o.section || sections[0]?.id || 'general' }));
+      } else if(obj && Array.isArray(obj.items)){
+        sections = Array.isArray(obj.sections) && obj.sections.length ? obj.sections : [{id:'general', name:'General', order:0}];
+        items = obj.items.map(o=> ({ ...o, section: o.section || sections[0].id }));
+      } else { showToast('Formato incorrecto'); return; }
+      saveLocal(); render(getSearchQuery()); refreshSectionSelects(); showToast('Importación completa'); e.target.value=''; });
+
+    // Búsqueda
+    function getSearchQuery(){ return $('#searchPublic')?.value || ''; }
+    $('#searchPublic').addEventListener('input', (e)=> render(e.target.value||''));
+
+    // Drag & Drop admin (zona)
+    function attachDrops(){ const drop = document.getElementById('drop'); if(!drop) return; ['dragenter','dragover'].forEach(ev=> drop.addEventListener(ev, e=>{ if(!isAdmin) return; e.preventDefault(); drop.classList.add('dragover'); })); ['dragleave','drop'].forEach(ev=> drop.addEventListener(ev, e=>{ if(!isAdmin) return; if(ev==='drop'){ const dt=e.dataTransfer; const urlList=dt.getData('text/uri-list'); const plain=dt.getData('text/plain'); const text=[urlList,plain].filter(Boolean).join('\n'); if(text) addUrls(text); } drop.classList.remove('dragover'); })); }
+
+    // Persistencia local para admin
+    function saveLocal(){ if(!isAdmin) return; const payload = { sections, items }; localStorage.setItem('yt_gallery_payload_v1', JSON.stringify(payload)); }
+    function loadLocal(){ try{ const raw = localStorage.getItem('yt_gallery_payload_v1'); if(!raw) return false; const obj = JSON.parse(raw); if(obj && Array.isArray(obj.items)){ sections = Array.isArray(obj.sections)&&obj.sections.length? obj.sections : [{id:'general', name:'General', order:0}]; items = obj.items; return true; } }catch{} return false; }
+
+    // Carga principal
+    async function load(){
+      try{
+        const res = await fetch(CONFIG.DATA_URL, { cache:'no-store' });
+        if(res.ok){ const obj = await res.json(); if(Array.isArray(obj)){ sections = [{id:'general', name:'General', order:0}]; items = obj.map(o=> ({...o, section: o.section || 'general'})); } else { sections = Array.isArray(obj.sections)&&obj.sections.length? obj.sections : [{id:'general', name:'General', order:0}]; items = Array.isArray(obj.items)? obj.items : []; }
+          document.getElementById('dataSource').textContent='videos.json'; }
+        else{ throw new Error('No disponible'); }
+      }catch(e){
+        // fallback local
+        if(loadLocal()){ document.getElementById('dataSource').textContent='localStorage'; }
+        else { sections = [{id:'general', name:'General', order:0}]; items = []; document.getElementById('dataSource').textContent='vacío'; }
+      }
+      ensureDefaultSection(); refreshSectionSelects(); render(''); attachDrops();
+    }
+
+    // Init
+    load();
+  </script>
+</body>
+</html>
