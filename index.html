@@ -4,428 +4,233 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Curso Básico de Canva</title>
-  <meta name="description" content="Curso Básico de Canva: videos por secciones, acceso de administrador para agregar contenido y enlace para obtener Canva con asesor." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet" />
   <style>
     :root{
-      --bg:#0b0b0f;       /* negro profundo */
-      --panel:#12121a;    /* panel oscuro */
-      --card:#161621;
-      --muted:#a3a3b2;
-      --text:#e9e9f1;     /* texto claro */
-      --brand:#7cfbde;    /* acento menta-neón */
-      --brand-2:#8b5cf6;  /* acento lila */
-      --danger:#ef4444;
-      --ok:#22c55e;
-      --shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 40px rgba(124,251,222,.05);
-      --radius: 16px;
+      --bg:#0b0b0f; --panel:#12121a; --card:#161621; --text:#e9e9f1; --muted:#a3a3b2;
+      --brand:#7cfbde; --brand2:#8b5cf6; --ok:#22c55e; --danger:#ef4444; --radius:14px;
     }
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,"Helvetica Neue",Arial; 
-      background: radial-gradient(1200px 800px at 10% -10%, rgba(139,92,246,.12), transparent 40%),
-                  radial-gradient(900px 600px at 110% 10%, rgba(124,251,222,.10), transparent 40%),
-                  var(--bg);
-      color:var(--text); line-height:1.6;
-    }
-    a{color:var(--brand)}
-    header{
-      position:sticky; top:0; z-index:10;
-      backdrop-filter:saturate(140%) blur(8px);
-      background: linear-gradient(180deg, rgba(13,13,20,.9), rgba(13,13,20,.6));
-      border-bottom:1px solid rgba(124,251,222,.15);
-    }
-    .wrap{max-width:1100px; margin:0 auto; padding:18px 18px}
-    .row{display:flex; align-items:center; gap:14px; justify-content:space-between}
-    .title{font-size:clamp(22px,3vw,34px); font-weight:800; letter-spacing:.3px}
-    .admin-btn{
-      display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:12px; 
-      background:linear-gradient(135deg, rgba(124,251,222,.15), rgba(139,92,246,.18));
-      border:1px solid rgba(124,251,222,.25); color:var(--text); cursor:pointer;
-      box-shadow:var(--shadow); transition:transform .15s ease, box-shadow .2s ease;
-    }
-    .admin-btn:hover{ transform:translateY(-1px) }
+    body{margin:0;background:#0b0b0f;color:var(--text);font-family:Poppins,system-ui,Segoe UI,Roboto}
+    header{position:sticky;top:0;background:#12121acc;backdrop-filter:saturate(140%) blur(6px);border-bottom:2px solid var(--brand)}
+    .wrap{max-width:1000px;margin:0 auto;padding:14px}
+    h1{margin:8px 0;color:var(--brand)}
+    .cta{text-align:center;margin:18px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--brand);color:#0b0b0f;text-decoration:none;font-weight:700}
+    .section{margin:26px auto;padding:18px;max-width:1000px;border:1px solid var(--brand);border-radius:var(--radius);background:var(--card)}
+    .section h2{color:var(--brand2);margin:0 0 10px}
+    .video{margin:12px 0}
+    iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:10px}
+    footer{text-align:center;padding:24px;color:var(--muted)}
 
-    .hero{padding:40px 18px 22px}
-    .hero .box{
-      background:linear-gradient(135deg, rgba(124,251,222,.06), rgba(139,92,246,.06));
-      border:1px solid rgba(124,251,222,.18);
-      border-radius:var(--radius); padding:28px; box-shadow:var(--shadow);
-    }
-    .hero h1{margin:0 0 6px; font-size:clamp(28px,5vw,44px)}
-    .hero p{margin:0; color:var(--muted)}
-
-    .cta{
-      margin:26px 0 8px; display:flex; flex-wrap:wrap; gap:12px; align-items:center
-    }
-    .cta .note{color:var(--muted)}
-    .cta .btn{
-      display:inline-flex; align-items:center; justify-content:center; gap:10px;
-      padding:12px 18px; border-radius:14px; font-weight:700; 
-      background:linear-gradient(135deg, var(--brand), #b4ffe5);
-      color:#0b0b0f; border:none; cursor:pointer; text-decoration:none;
-      box-shadow:0 10px 25px rgba(124,251,222,.25), 0 0 0 2px rgba(124,251,222,.25) inset;
-      transition: transform .08s ease;
-    }
-    .cta .btn:active{ transform: translateY(1px) }
-
-    .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:16px; margin:24px 0}
-    .card{
-      background:var(--card); border:1px solid rgba(124,251,222,.18); border-radius:var(--radius);
-      box-shadow:var(--shadow); overflow:hidden; display:flex; flex-direction:column
-    }
-    .card header{position:initial; backdrop-filter:none; background:transparent; border:none}
-    .card h3{margin:16px; font-size:18px}
-    .card .content{padding:0 16px 16px}
-    .card .desc{color:var(--muted); margin:0 16px 12px}
-
-    details.section{background:transparent; border-top:1px dashed rgba(124,251,222,.25)}
-    details[open] > summary .chev{transform:rotate(90deg)}
-    summary{
-      list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between;
-      padding:16px; gap:12px; font-weight:700; letter-spacing:.3px
-    }
-    summary::-webkit-details-marker{display:none}
-    .chev{transition:transform .18s ease}
-
-    .video-list{display:grid; gap:12px}
-    .video-embed{aspect-ratio:16/9; width:100%; border:0; border-radius:12px}
-
-    .panel{background:var(--panel); border:1px solid rgba(124,251,222,.2); border-radius:var(--radius); padding:18px; box-shadow:var(--shadow)}
-    .panel h2{margin:0 0 8px}
-    .row-fields{display:grid; gap:12px; grid-template-columns:1fr}
-    .row-2{display:grid; gap:12px; grid-template-columns:1fr 1fr}
-    .input, textarea{
-      width:100%; background:#0f0f16; color:var(--text); border:1px solid rgba(124,251,222,.25);
-      border-radius:12px; padding:12px 12px; outline:none
-    }
-    textarea{min-height:90px; resize:vertical}
-    .small{font-size:12px; color:var(--muted)}
-    .actions{display:flex; gap:10px; flex-wrap:wrap}
-    .btn-ghost{background:transparent; border:1px dashed rgba(124,251,222,.35); color:var(--text); border-radius:12px; padding:10px 14px; cursor:pointer}
-    .btn-ok{background:linear-gradient(135deg, #22c55e, #a7f3d0); color:#08210f; border:none; border-radius:12px; padding:10px 14px; font-weight:700; cursor:pointer}
-    .btn-danger{background:linear-gradient(135deg, #ef4444, #fecaca); color:#280808; border:none; border-radius:12px; padding:10px 14px; font-weight:700; cursor:pointer}
-
-    .login{display:none; gap:10px; align-items:center}
-    .login.show{display:flex}
-
-    footer{padding:24px 18px 60px; color:var(--muted); text-align:center}
-    .pill{display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; background:rgba(124,251,222,.08); border:1px solid rgba(124,251,222,.25)}
-
-    /* mobile tweaks */
-    @media (max-width:560px){
-      .cta{flex-direction:column; align-items:stretch}
-    }
+    /* Admin bar */
+    .adminbar{display:flex;gap:8px;align-items:center}
+    .ghost{background:transparent;border:1px dashed rgba(124,251,222,.5);color:var(--text);border-radius:10px;padding:8px 12px;cursor:pointer}
+    .ok{background:linear-gradient(135deg,#22c55e,#a7f3d0);border:0;color:#08210f;border-radius:10px;padding:8px 12px;font-weight:800;cursor:pointer}
+    .danger{background:linear-gradient(135deg,#ef4444,#fecaca);border:0;color:#280808;border-radius:10px;padding:8px 12px;font-weight:800;cursor:pointer}
+    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .input{background:#0f0f16;border:1px solid rgba(124,251,222,.35);color:var(--text);border-radius:10px;padding:8px 10px}
+    .panel{display:none;margin:18px 0;padding:16px;border:1px solid rgba(124,251,222,.35);border-radius:12px;background:var(--panel)}
+    .panel.show{display:block}
+    .table{width:100%;border-collapse:collapse;margin-top:10px}
+    .table th,.table td{border-bottom:1px solid rgba(124,251,222,.2);padding:8px;text-align:left}
+    .hint{color:var(--muted);font-size:13px}
+    .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:rgba(124,251,222,.08);border:1px solid rgba(124,251,222,.25)}
   </style>
 </head>
 <body>
   <header>
     <div class="wrap row">
-      <div class="title">CURSO BÁSICO DE CANVA</div>
-      <div class="actions">
-        <button id="adminToggle" class="admin-btn" title="Entrar a modo administrador" aria-label="Modo administrador">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 17a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" fill="currentColor"/><path d="M19.4 15a7.5 7.5 0 0 0 .1-1 7.5 7.5 0 0 0-.1-1l2.1-1.6a.5.5 0 0 0 .1-.6l-2-3.5a.5.5 0 0 0-.6-.2l-2.5 1a7.7 7.7 0 0 0-1.7-1l-.4-2.7a.5.5 0 0 0-.5-.4H9.7a.5.5 0 0 0-.5.4l-.4 2.7a7.7 7.7 0 0 0-1.7 1l-2.5-1a.5.5 0 0 0-.6.2l-2 3.5a.5.5 0 0 0 .1.6L2.2 13a7.5 7.5 0 0 0-.1 1 7.5 7.5 0 0 0 .1 1l-2.1 1.6a.5.5 0 0 0-.1.6l2 3.5a.5.5 0 0 0 .6.2l2.5-1a7.7 7.7 0 0 0 1.7 1l.4 2.7a.5.5 0 0 0 .5.4h4.6a.5.5 0 0 0 .5-.4l.4-2.7a7.7 7.7 0 0 0 1.7-1l2.5 1a.5.5 0 0 0 .6-.2l2-3.5a.5.5 0 0 0-.1-.6L19.4 15Z" fill="currentColor"/></svg>
-          Admin
-        </button>
-        <div id="login" class="login" aria-live="polite">
-          <input id="pwd" class="input" type="password" placeholder="Contraseña" aria-label="Contraseña de administrador" />
-          <button id="enter" class="btn-ok">Entrar</button>
-          <button id="cancelLogin" class="btn-ghost">Cancelar</button>
+      <h1 class="row" style="flex:1 1 auto">CURSO BÁSICO DE CANVA <span class="pill">Vista pública</span></h1>
+      <div class="adminbar">
+        <button id="btnAdmin" class="ghost">Admin</button>
+        <div id="loginBox" class="row" style="display:none">
+          <input id="pwd" class="input" type="password" placeholder="Contraseña" />
+          <button id="enter" class="ok">Entrar</button>
+          <button id="cancel" class="ghost">Cancelar</button>
         </div>
       </div>
     </div>
   </header>
 
   <main class="wrap">
-    <section class="hero">
-      <div class="box">
-        <h1>Bienvenido/a al <span style="color:var(--brand)">Curso Básico de Canva</span></h1>
-        <p>Aprende a crear diseños impactantes paso a paso. Explora las secciones de introducción, las partes básicas y avanza a tu ritmo.</p>
-        <div class="cta">
-          <span class="note">Si deseas adquirir Canva, consulta con un asesor haciendo clic en este botón</span>
-          <a class="btn" href="https://walink.co/70069f" target="_blank" rel="noopener" aria-label="Abrir WhatsApp para adquirir Canva">Quiero adquirir Canva</a>
-        </div>
+    <!-- ===== CONTENIDO PÚBLICO FIJO (lo ve todo mundo) ===== -->
+    <div class="section">
+      <h2>Introducción</h2>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/nz_unjgg_CE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>1 Creando una cuenta en Canva · <a href="https://www.youtube.com/watch?v=nz_unjgg_CE" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/EPz8eWfE4jE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>2 Inicio en Canva - Barras, Elementos, Paneles · <a href="https://www.youtube.com/watch?v=EPz8eWfE4jE" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/6e6_Uctc35A" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>3 Página de Edición - Distintos Paneles · <a href="https://www.youtube.com/watch?v=6e6_Uctc35A" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/CLjjxVcXeAU" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>1 Realizar un Diseño Personalizado, Post para Instagram · <a href="https://www.youtube.com/watch?v=CLjjxVcXeAU" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/kn8m000eKo0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>2 Crear Nuevas páginas y utilizar la Herramienta Posición · <a href="https://www.youtube.com/watch?v=kn8m000eKo0" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/gX2oDsMmVio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>3 Utilizar Marcos, Subir imágenes Propias · <a href="https://www.youtube.com/watch?v=gX2oDsMmVio" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/SCyOkZtb7Xk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>4 Proyecto - Realiza un Diseño Personalizado · <a href="https://www.youtube.com/watch?v=SCyOkZtb7Xk" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/9H0RDqrXj58" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>5 Ejercicio del Proyecto · <a href="https://www.youtube.com/watch?v=9H0RDqrXj58" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/rfJSQxcKI9U" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>6 Cómo Descargar los Diseños - Todos los Formatos · <a href="https://www.youtube.com/watch?v=rfJSQxcKI9U" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
+    </div>
+
+    <div class="section">
+      <h2>Básico</h2>
+      <p class="hint">Aquí agregaremos los videos de la parte básica en tu versión pública.</p>
+    </div>
+
+    <div class="cta">
+      <p>Si deseas adquirir Canva, consulta con un asesor haciendo clic en este botón:</p>
+      <a class="btn" href="https://walink.co/70069f" target="_blank">Quiero adquirir Canva</a>
+    </div>
+
+    <!-- ===== PANEL ADMIN (CONSTRUCTOR) ===== -->
+    <section id="adminPanel" class="panel">
+      <h2>Modo Administrador (Constructor de página pública)</h2>
+      <p class="hint">Este panel sirve para <b>importar tu videos.json</b>, revisar el contenido y luego <b>descargar un index público</b> (estático) que puedes subir a GitHub Pages/Netlify. Así, todos verán los videos. La clave es de una sola vez: <code>a@97030625</code>.</p>
+
+      <div class="row" style="margin:8px 0">
+        <button id="btnImport" class="ghost">Importar videos.json</button>
+        <button id="btnExport" class="ghost">Exportar JSON actual</button>
+        <button id="btnDownload" class="ok">Descargar página pública (HTML)</button>
+        <button id="btnClear" class="danger">Borrar JSON cargado</button>
       </div>
-    </section>
+      <div id="jsonStatus" class="hint">Sin JSON cargado aún.</div>
 
-    <!-- Contenedor de secciones renderizadas -->
-    <section id="sections" class="grid" aria-live="polite"></section>
-
-    <!-- Panel de administración (se muestra solo en modo admin) -->
-    <section id="adminPanel" class="panel" style="display:none; margin-top:28px;">
-      <h2>Modo Administrador</h2>
-      <p class="small">Agrega nuevas secciones y videos. Todo se guarda en tu navegador (localStorage). Ideal para pruebas rápidas; para producción considera conectar una base de datos.</p>
-
-      <div class="row-fields" style="margin-top:10px">
-        <input id="sectionTitle" class="input" placeholder="Título de la sección (p. ej., Introducción, Parte Básica)" />
-        <textarea id="sectionDesc" class="input" placeholder="Descripción opcional de la sección"></textarea>
-        <input id="sectionVideos" class="input" placeholder="URLs de videos (separadas por coma). Soporta YouTube; se incrustan automáticamente." />
-        <div class="actions">
-          <button id="addSection" class="btn-ok">Agregar sección</button>
-          <button id="exportData" class="btn-ghost" title="Exportar JSON">Exportar</button>
-          <button id="importData" class="btn-ghost" title="Importar JSON">Importar</button>
-          <button id="resetAll" class="btn-danger" title="Borrar todo">Borrar todo</button>
-          <button id="logout" class="btn-ghost">Salir de admin</button>
-        </div>
-        <p class="small">Sugerencia: Puedes empezar con dos secciones: “Introducción” (3 videos) y “Parte básica” (4 videos). Después, agrega más según tu plan.</p>
-      </div>
+      <table class="table" id="tblPreview" style="display:none">
+        <thead><tr><th>Sección</th><th>Título</th><th>URL</th></tr></thead>
+        <tbody></tbody>
+      </table>
     </section>
   </main>
 
   <footer>
-    <span class="pill">⚡ Hecho con ❤️ para tu curso de Canva</span>
+    <p>⚡ Hecho con ❤️ para tu curso de Canva</p>
   </footer>
 
   <script>
-    const PASSWORD = "a@97030625"; // *Clave solicitada*
-    const STORAGE_KEY = "curso_canva_sections_v1";
+    // ===== Aviso si se abre como archivo local =====
+    if (location.protocol === 'file:') {
+      const warn = document.createElement('div');
+      warn.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);bottom:16px;background:#12121a;color:#fff;padding:10px 14px;border:1px solid #7cfbde;border-radius:10px;z-index:9999;font-size:14px;';
+      warn.textContent = 'Estás viendo el archivo local (file://). Para que otros lo vean igual, súbelo a un hosting (GitHub Pages/Netlify) y comparte la URL pública.';
+      document.body.appendChild(warn);
+      setTimeout(()=>warn.remove(), 12000);
+    }
 
-    // Estado en memoria
-    let isAdmin = false;
-    let sections = [];
-
-    // Elementos
-    const loginBox = document.getElementById('login');
-    const adminToggle = document.getElementById('adminToggle');
+    // ===== Admin: login simple =====
+    const PASSWORD = 'a@97030625';
+    const btnAdmin = document.getElementById('btnAdmin');
+    const loginBox = document.getElementById('loginBox');
     const enterBtn = document.getElementById('enter');
-    const cancelLoginBtn = document.getElementById('cancelLogin');
-    const pwdInput = document.getElementById('pwd');
+    const cancelBtn = document.getElementById('cancel');
+    const pwd = document.getElementById('pwd');
+    const panel = document.getElementById('adminPanel');
 
-    const adminPanel = document.getElementById('adminPanel');
-    const sectionsWrap = document.getElementById('sections');
-
-    const sectionTitle = document.getElementById('sectionTitle');
-    const sectionDesc = document.getElementById('sectionDesc');
-    const sectionVideos = document.getElementById('sectionVideos');
-    const addSectionBtn = document.getElementById('addSection');
-    const exportBtn = document.getElementById('exportData');
-    const importBtn = document.getElementById('importData');
-    const resetBtn = document.getElementById('resetAll');
-    const logoutBtn = document.getElementById('logout');
-
-    // Utilidades
-    const save = () => localStorage.setItem(STORAGE_KEY, JSON.stringify(sections));
-    const load = () => {
-      try{ const raw = localStorage.getItem(STORAGE_KEY); sections = raw ? JSON.parse(raw) : []; }
-      catch{ sections = []; }
-    };
-
-    const ytIdFromUrl = (url) => {
-      try{
-        const u = new URL(url);
-        if (u.hostname.includes('youtu.be')) return u.pathname.slice(1);
-        if (u.hostname.includes('youtube.com')){
-          if (u.searchParams.get('v')) return u.searchParams.get('v');
-          const parts = u.pathname.split('/');
-          const idx = parts.indexOf('embed');
-          if (idx !== -1 && parts[idx+1]) return parts[idx+1];
-        }
-      }catch{}
-      return null;
-    };
-
-    const normalizeVideos = (str) => str
-        .split(',')
-        .map(s=>s.trim())
-        .filter(Boolean)
-        .map(url=>({ url }));
-
-    function render(){
-      sectionsWrap.innerHTML = '';
-      if(!sections.length){
-        const empty = document.createElement('div');
-        empty.className = 'card';
-        empty.innerHTML = `
-          <h3 style="margin:16px;">Aún no hay secciones</h3>
-          <p class="desc">Inicia sesión como administrador para crear la primera sección del curso.</p>
-        `;
-        sectionsWrap.appendChild(empty);
-        return;
-      }
-
-      sections.forEach((sec, idx) => {
-        const card = document.createElement('article');
-        card.className = 'card';
-
-        const header = document.createElement('header');
-        const sum = document.createElement('summary');
-        sum.innerHTML = `<span>${sec.title || 'Sección sin título'}</span> <span class="chev">▶</span>`;
-
-        const details = document.createElement('details');
-        details.className = 'section';
-        details.appendChild(sum);
-
-        if (sec.desc){
-          const p = document.createElement('p');
-          p.className = 'desc';
-          p.textContent = sec.desc;
-          details.appendChild(p);
-        }
-
-        const list = document.createElement('div');
-        list.className = 'video-list content';
-
-        if(Array.isArray(sec.videos)){
-          sec.videos.forEach((v, vi) => {
-            const vidId = ytIdFromUrl(v.url);
-            const holder = document.createElement('div');
-            if(vidId){
-              holder.innerHTML = `<iframe class="video-embed" loading="lazy" src="https://www.youtube.com/embed/${vidId}" allowfullscreen title="Video ${vi+1} - ${sec.title}"></iframe>`;
-            }else{
-              holder.innerHTML = `<a href="${v.url}" target="_blank" rel="noopener">Abrir video ${vi+1}</a>`;
-            }
-
-            // Controles de admin para cada video
-            if(isAdmin){
-              const controls = document.createElement('div');
-              controls.className = 'actions';
-              controls.style.margin = '6px 0 14px';
-
-              const del = document.createElement('button');
-              del.className = 'btn-danger';
-              del.textContent = 'Eliminar video';
-              del.onclick = () => {
-                if(confirm('¿Eliminar este video?')){
-                  sec.videos.splice(vi,1); save(); render();
-                }
-              };
-
-              controls.appendChild(del);
-              holder.appendChild(controls);
-            }
-
-            list.appendChild(holder);
-          });
-        }
-
-        // Controles de admin por sección
-        if(isAdmin){
-          const controls = document.createElement('div');
-          controls.className = 'actions';
-          controls.style.margin = '10px 16px 18px';
-
-          const addVid = document.createElement('button');
-          addVid.className = 'btn-ghost';
-          addVid.textContent = 'Agregar video a esta sección';
-          addVid.onclick = () => {
-            const url = prompt('Pega la URL del video (YouTube u otro).');
-            if(url){
-              sec.videos = sec.videos || [];
-              sec.videos.push({url});
-              save(); render();
-            }
-          };
-
-          const editSec = document.createElement('button');
-          editSec.className = 'btn-ghost';
-          editSec.textContent = 'Editar sección';
-          editSec.onclick = () => {
-            const newTitle = prompt('Nuevo título de sección:', sec.title || '');
-            if(newTitle===null) return;
-            const newDesc = prompt('Nueva descripción (opcional):', sec.desc || '');
-            sec.title = newTitle.trim();
-            sec.desc = (newDesc||'').trim();
-            save(); render();
-          };
-
-          const remove = document.createElement('button');
-          remove.className = 'btn-danger';
-          remove.textContent = 'Eliminar sección';
-          remove.onclick = () => {
-            if(confirm('¿Eliminar la sección completa?')){
-              sections.splice(idx,1); save(); render();
-            }
-          };
-
-          controls.append(addVid, editSec, remove);
-          list.appendChild(controls);
-        }
-
-        card.appendChild(details);
-        details.appendChild(list);
-        sectionsWrap.appendChild(card);
-      });
-    }
-
-    // Autenticación visual simple
-    function showLogin(show){ loginBox.classList.toggle('show', !!show); if(show){ pwdInput.focus(); } }
-    function setAdmin(on){
-      isAdmin = !!on;
-      adminPanel.style.display = isAdmin ? 'block' : 'none';
-      render();
-    }
-
-    adminToggle.addEventListener('click', ()=>{
-      if(isAdmin){
-        setAdmin(false);
-      }else{
-        showLogin(true);
-      }
-    });
-
+    btnAdmin.addEventListener('click', ()=>{ loginBox.style.display = 'flex'; pwd.focus(); });
+    cancelBtn.addEventListener('click', ()=>{ loginBox.style.display='none'; pwd.value=''; });
     enterBtn.addEventListener('click', ()=>{
-      if(pwdInput.value === PASSWORD){
-        showLogin(false); setAdmin(true); pwdInput.value='';
-      }else{
-        alert('Contraseña incorrecta');
-      }
+      if(pwd.value === PASSWORD){ panel.classList.add('show'); loginBox.style.display='none'; pwd.value=''; }
+      else alert('Contraseña incorrecta');
     });
-    cancelLoginBtn.addEventListener('click', ()=>{ showLogin(false); pwdInput.value=''; });
-    pwdInput.addEventListener('keydown', (e)=>{ if(e.key==='Enter') enterBtn.click(); });
+    pwd.addEventListener('keydown', (e)=>{ if(e.key==='Enter') enterBtn.click(); });
 
-    // Acciones del panel admin
-    addSectionBtn.addEventListener('click', ()=>{
-      const title = sectionTitle.value.trim();
-      const desc = sectionDesc.value.trim();
-      const vids = normalizeVideos(sectionVideos.value);
-      if(!title){ alert('Ponle un título a la sección.'); return; }
-      sections.push({ title, desc, videos: vids });
-      save(); render();
-      sectionTitle.value = ''; sectionDesc.value=''; sectionVideos.value='';
-    });
+    // ===== Constructor: importar / previsualizar / descargar =====
+    let DATA = null; // {sections:[], items:[]}
 
-    exportBtn.addEventListener('click', ()=>{
-      const blob = new Blob([JSON.stringify(sections, null, 2)], {type:'application/json'});
-      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'curso_canva_secciones.json'; a.click(); URL.revokeObjectURL(a.href);
-    });
+    const btnImport = document.getElementById('btnImport');
+    const btnExport = document.getElementById('btnExport');
+    const btnDownload = document.getElementById('btnDownload');
+    const btnClear = document.getElementById('btnClear');
+    const jsonStatus = document.getElementById('jsonStatus');
+    const tbl = document.getElementById('tblPreview');
+    const tbody = tbl.querySelector('tbody');
 
-    importBtn.addEventListener('click', ()=>{
+    function ytIdFromUrl(u){ try{ const url = new URL(u); if(url.hostname.includes('youtu.be')) return url.pathname.slice(1); if(url.hostname.includes('youtube.com')) return url.searchParams.get('v'); }catch{} return null; }
+
+    function refreshPreview(){
+      if(!DATA){ tbl.style.display='none'; jsonStatus.textContent = 'Sin JSON cargado aún.'; return; }
+      tbody.innerHTML='';
+      const secById = Object.fromEntries((DATA.sections||[]).map(s=>[s.id,s]));
+      (DATA.items||[]).forEach(it=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${secById[it.section]?.name||it.section}</td><td>${it.title||''}</td><td><a href="${it.url}" target="_blank">${it.url}</a></td>`;
+        tbody.appendChild(tr);
+      });
+      tbl.style.display='table';
+      jsonStatus.textContent = `Secciones: ${(DATA.sections||[]).length} · Videos: ${(DATA.items||[]).length}`;
+      localStorage.setItem('canva_builder_json', JSON.stringify(DATA));
+    }
+
+    // Carga previa desde localStorage
+    try{ const raw = localStorage.getItem('canva_builder_json'); if(raw){ DATA = JSON.parse(raw); refreshPreview(); } }catch{}
+
+    btnImport.addEventListener('click',()=>{
       const inp = document.createElement('input'); inp.type='file'; inp.accept='.json,application/json';
       inp.onchange = async (e)=>{
         const file = e.target.files[0]; if(!file) return;
-        const text = await file.text();
-        try{
-          const data = JSON.parse(text);
-          if(Array.isArray(data)){
-            sections = data; save(); render();
-          }else{ alert('El JSON debe ser un arreglo de secciones.'); }
-        }catch(err){ alert('JSON inválido.'); }
+        const txt = await file.text();
+        try{ const obj = JSON.parse(txt); if(obj.sections && obj.items){ DATA = obj; refreshPreview(); } else alert('El JSON debe contener { sections:[], items:[] }'); }
+        catch(err){ alert('JSON inválido'); }
       };
       inp.click();
     });
 
-    resetBtn.addEventListener('click', ()=>{
-      if(confirm('¿Borrar todas las secciones guardadas?')){
-        sections = []; save(); render();
-      }
+    btnExport.addEventListener('click',()=>{
+      if(!DATA){ alert('Primero importa o crea datos.'); return; }
+      const blob = new Blob([JSON.stringify(DATA,null,2)], {type:'application/json'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'videos.json'; a.click(); URL.revokeObjectURL(a.href);
     });
 
-    logoutBtn.addEventListener('click', ()=>{ setAdmin(false); });
+    btnClear.addEventListener('click',()=>{
+      if(confirm('¿Borrar JSON cargado?')){ DATA = null; localStorage.removeItem('canva_builder_json'); refreshPreview(); }
+    });
 
-    // Inicializar
-    load();
-    // Si no hay datos, sugerimos estructura base (sin videos) solo una vez
-    if(!sections.length){
-      sections = [
-        { title: 'Introducción', desc: 'Primera toma de contacto con Canva: qué es y cómo funciona.', videos: [] },
-        { title: 'Parte básica', desc: 'Herramientas esenciales y primeros diseños prácticos.', videos: [] }
-      ];
-      save();
-    }
-    render();
+    btnDownload.addEventListener('click',()=>{
+      if(!DATA){ alert('Primero importa tu videos.json'); return; }
+      // Ordenar secciones por order; items en el orden original
+      const sections = [...(DATA.sections||[])].sort((a,b)=>(a.order||0)-(b.order||0));
+      const items = DATA.items||[];
+      const bySec = {};
+      sections.forEach(s=>bySec[s.id]=[]);
+      items.forEach(it=>{ (bySec[it.section]||(bySec[it.section]=[])).push(it); });
+
+      function esc(s=''){ return String(s).replace(/[&<>]/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m])); }
+
+      let sectionsHtml='';
+      sections.forEach(sec=>{
+        const list = (bySec[sec.id]||[]).map(it=>{
+          const id = ytIdFromUrl(it.url) || it.id || '';
+          const iframe = id ? `<iframe src="https://www.youtube-nocookie.com/embed/${id}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>` : `<a href="${esc(it.url)}" target="_blank">Abrir video</a>`;
+          return `<div class="video">${iframe}<p>${esc(it.title||'Video')} · <a href="${esc(it.url)}" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>`;
+        }).join('\n');
+        sectionsHtml += `\n<div class="section">\n  <h2>${esc(sec.name||'Sección')}</h2>\n  ${list || '<p class="hint">(Sin videos aún)</p>'}\n</div>\n`;
+      });
+
+      const html = `<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Curso Básico de Canva</title>
+  <style>
+    body{margin:0;background:#0b0b0f;color:#e9e9f1;font-family:Poppins,system-ui,Segoe UI,Roboto}
+    header{padding:20px;text-align:center;background:#12121a;border-bottom:2px solid #7cfbde}
+    h1{margin:0;color:#7cfbde}
+    .section{margin:26px auto;padding:18px;max-width:1000px;border:1px solid #7cfbde;border-radius:14px;background:#161621}
+    .section h2{color:#8b5cf6;margin:0 0 10px}
+    .video{margin:12px 0}
+    iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:10px}
+    .cta{text-align:center;margin:18px}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:#7cfbde;color:#0b0b0f;text-decoration:none;font-weight:700}
+    footer{text-align:center;padding:24px;color:#a3a3b2}
+  </style>
+</head>
+<body>
+  <header><h1>CURSO BÁSICO DE CANVA</h1></header>
+  <main>${sectionsHtml}
+    <div class="cta"><p>Si deseas adquirir Canva, consulta con un asesor haciendo clic en este botón:</p><a class="btn" href="https://walink.co/70069f" target="_blank">Quiero adquirir Canva</a></div>
+  </main>
+  <footer><p>⚡ Hecho con ❤️ para tu curso de Canva</p></footer>
+</body>
+</html>`;
+
+      const blob = new Blob([html], {type:'text/html'});
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'index_publico.html'; a.click(); URL.revokeObjectURL(a.href);
+    });
   </script>
 </body>
 </html>
