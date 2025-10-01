@@ -18,8 +18,8 @@
     .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--brand);color:#0b0b0f;text-decoration:none;font-weight:700}
     .section{margin:26px auto;padding:18px;max-width:1000px;border:1px solid var(--brand);border-radius:var(--radius);background:var(--card)}
     .section h2{color:var(--brand2);margin:0 0 10px}
-    .video{margin:12px 0}
-    iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:10px}
+    .video{margin:12px 0; display:inline-block; width:45%; vertical-align:top;}
+    iframe{width:100%; aspect-ratio:16/9; border:0; border-radius:10px}
     footer{text-align:center;padding:24px;color:var(--muted)}
 
     /* Admin bar */
@@ -35,6 +35,11 @@
     .table th,.table td{border-bottom:1px solid rgba(124,251,222,.2);padding:8px;text-align:left}
     .hint{color:var(--muted);font-size:13px}
     .pill{display:inline-flex;gap:8px;align-items:center;padding:6px 10px;border-radius:999px;background:rgba(124,251,222,.08);border:1px solid rgba(124,251,222,.25)}
+
+    /* Responsive videos */
+    @media (max-width:768px){
+      .video{width:100%;}
+    }
   </style>
 </head>
 <body>
@@ -53,18 +58,18 @@
   </header>
 
   <main class="wrap">
-    <!-- ===== CONTENIDO PÚBLICO FIJO (lo ve todo mundo) ===== -->
+    <!-- ===== CONTENIDO PÚBLICO FIJO ===== -->
     <div class="section">
       <h2>Introducción</h2>
-      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/nz_unjgg_CE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>1 Creando una cuenta en Canva · <a href="https://www.youtube.com/watch?v=nz_unjgg_CE" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
-      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/EPz8eWfE4jE" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>2 Inicio en Canva - Barras, Elementos, Paneles · <a href="https://www.youtube.com/watch?v=EPz8eWfE4jE" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
-      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/6e6_Uctc35A" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>3 Página de Edición - Distintos Paneles · <a href="https://www.youtube.com/watch?v=6e6_Uctc35A" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
-      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/CLjjxVcXeAU" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>1 Realizar un Diseño Personalizado, Post para Instagram · <a href="https://www.youtube.com/watch?v=CLjjxVcXeAU" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
-      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/kn8m000eKo0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>2 Crear Nuevas páginas y utilizar la Herramienta Posición · <a href="https://www.youtube.com/watch?v=kn8m000eKo0" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
-      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/gX2oDsMmVio" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>3 Utilizar Marcos, Subir imágenes Propias · <a href="https://www.youtube.com/watch?v=gX2oDsMmVio" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
-      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/SCyOkZtb7Xk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>4 Proyecto - Realiza un Diseño Personalizado · <a href="https://www.youtube.com/watch?v=SCyOkZtb7Xk" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
-      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/9H0RDqrXj58" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>5 Ejercicio del Proyecto · <a href="https://www.youtube.com/watch?v=9H0RDqrXj58" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
-      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/rfJSQxcKI9U" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe><p>6 Cómo Descargar los Diseños - Todos los Formatos · <a href="https://www.youtube.com/watch?v=rfJSQxcKI9U" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/nz_unjgg_CE" allowfullscreen></iframe><p>1 Creando una cuenta en Canva</p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/EPz8eWfE4jE" allowfullscreen></iframe><p>2 Inicio en Canva - Barras, Elementos, Paneles</p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/6e6_Uctc35A" allowfullscreen></iframe><p>3 Página de Edición - Distintos Paneles</p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/CLjjxVcXeAU" allowfullscreen></iframe><p>1 Realizar un Diseño Personalizado, Post para Instagram</p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/kn8m000eKo0" allowfullscreen></iframe><p>2 Crear Nuevas páginas y utilizar la Herramienta Posición</p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/gX2oDsMmVio" allowfullscreen></iframe><p>3 Utilizar Marcos, Subir imágenes Propias</p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/SCyOkZtb7Xk" allowfullscreen></iframe><p>4 Proyecto - Realiza un Diseño Personalizado</p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/9H0RDqrXj58" allowfullscreen></iframe><p>5 Ejercicio del Proyecto</p></div>
+      <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/rfJSQxcKI9U" allowfullscreen></iframe><p>6 Cómo Descargar los Diseños - Todos los Formatos</p></div>
     </div>
 
     <div class="section">
@@ -77,23 +82,10 @@
       <a class="btn" href="https://walink.co/70069f" target="_blank">Quiero adquirir Canva</a>
     </div>
 
-    <!-- ===== PANEL ADMIN (CONSTRUCTOR) ===== -->
+    <!-- PANEL ADMIN -->
     <section id="adminPanel" class="panel">
-      <h2>Modo Administrador (Constructor de página pública)</h2>
-      <p class="hint">Este panel sirve para <b>importar tu videos.json</b>, revisar el contenido y luego <b>descargar un index público</b> (estático) que puedes subir a GitHub Pages/Netlify. Así, todos verán los videos. La clave es de una sola vez: <code>a@97030625</code>.</p>
-
-      <div class="row" style="margin:8px 0">
-        <button id="btnImport" class="ghost">Importar videos.json</button>
-        <button id="btnExport" class="ghost">Exportar JSON actual</button>
-        <button id="btnDownload" class="ok">Descargar página pública (HTML)</button>
-        <button id="btnClear" class="danger">Borrar JSON cargado</button>
-      </div>
-      <div id="jsonStatus" class="hint">Sin JSON cargado aún.</div>
-
-      <table class="table" id="tblPreview" style="display:none">
-        <thead><tr><th>Sección</th><th>Título</th><th>URL</th></tr></thead>
-        <tbody></tbody>
-      </table>
+      <h2>Modo Administrador (Constructor)</h2>
+      <p class="hint">Importa tu JSON, revisa y descarga un index público.</p>
     </section>
   </main>
 
@@ -102,135 +94,19 @@
   </footer>
 
   <script>
-    // ===== Aviso si se abre como archivo local =====
-    if (location.protocol === 'file:') {
-      const warn = document.createElement('div');
-      warn.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);bottom:16px;background:#12121a;color:#fff;padding:10px 14px;border:1px solid #7cfbde;border-radius:10px;z-index:9999;font-size:14px;';
-      warn.textContent = 'Estás viendo el archivo local (file://). Para que otros lo vean igual, súbelo a un hosting (GitHub Pages/Netlify) y comparte la URL pública.';
-      document.body.appendChild(warn);
-      setTimeout(()=>warn.remove(), 12000);
-    }
-
-    // ===== Admin: login simple =====
     const PASSWORD = 'a@97030625';
-    const btnAdmin = document.getElementById('btnAdmin');
-    const loginBox = document.getElementById('loginBox');
-    const enterBtn = document.getElementById('enter');
-    const cancelBtn = document.getElementById('cancel');
-    const pwd = document.getElementById('pwd');
-    const panel = document.getElementById('adminPanel');
+    const btnAdmin=document.getElementById('btnAdmin');
+    const loginBox=document.getElementById('loginBox');
+    const enter=document.getElementById('enter');
+    const cancel=document.getElementById('cancel');
+    const pwd=document.getElementById('pwd');
+    const panel=document.getElementById('adminPanel');
 
-    btnAdmin.addEventListener('click', ()=>{ loginBox.style.display = 'flex'; pwd.focus(); });
-    cancelBtn.addEventListener('click', ()=>{ loginBox.style.display='none'; pwd.value=''; });
-    enterBtn.addEventListener('click', ()=>{
-      if(pwd.value === PASSWORD){ panel.classList.add('show'); loginBox.style.display='none'; pwd.value=''; }
-      else alert('Contraseña incorrecta');
-    });
-    pwd.addEventListener('keydown', (e)=>{ if(e.key==='Enter') enterBtn.click(); });
-
-    // ===== Constructor: importar / previsualizar / descargar =====
-    let DATA = null; // {sections:[], items:[]}
-
-    const btnImport = document.getElementById('btnImport');
-    const btnExport = document.getElementById('btnExport');
-    const btnDownload = document.getElementById('btnDownload');
-    const btnClear = document.getElementById('btnClear');
-    const jsonStatus = document.getElementById('jsonStatus');
-    const tbl = document.getElementById('tblPreview');
-    const tbody = tbl.querySelector('tbody');
-
-    function ytIdFromUrl(u){ try{ const url = new URL(u); if(url.hostname.includes('youtu.be')) return url.pathname.slice(1); if(url.hostname.includes('youtube.com')) return url.searchParams.get('v'); }catch{} return null; }
-
-    function refreshPreview(){
-      if(!DATA){ tbl.style.display='none'; jsonStatus.textContent = 'Sin JSON cargado aún.'; return; }
-      tbody.innerHTML='';
-      const secById = Object.fromEntries((DATA.sections||[]).map(s=>[s.id,s]));
-      (DATA.items||[]).forEach(it=>{
-        const tr = document.createElement('tr');
-        tr.innerHTML = `<td>${secById[it.section]?.name||it.section}</td><td>${it.title||''}</td><td><a href="${it.url}" target="_blank">${it.url}</a></td>`;
-        tbody.appendChild(tr);
-      });
-      tbl.style.display='table';
-      jsonStatus.textContent = `Secciones: ${(DATA.sections||[]).length} · Videos: ${(DATA.items||[]).length}`;
-      localStorage.setItem('canva_builder_json', JSON.stringify(DATA));
-    }
-
-    // Carga previa desde localStorage
-    try{ const raw = localStorage.getItem('canva_builder_json'); if(raw){ DATA = JSON.parse(raw); refreshPreview(); } }catch{}
-
-    btnImport.addEventListener('click',()=>{
-      const inp = document.createElement('input'); inp.type='file'; inp.accept='.json,application/json';
-      inp.onchange = async (e)=>{
-        const file = e.target.files[0]; if(!file) return;
-        const txt = await file.text();
-        try{ const obj = JSON.parse(txt); if(obj.sections && obj.items){ DATA = obj; refreshPreview(); } else alert('El JSON debe contener { sections:[], items:[] }'); }
-        catch(err){ alert('JSON inválido'); }
-      };
-      inp.click();
-    });
-
-    btnExport.addEventListener('click',()=>{
-      if(!DATA){ alert('Primero importa o crea datos.'); return; }
-      const blob = new Blob([JSON.stringify(DATA,null,2)], {type:'application/json'});
-      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'videos.json'; a.click(); URL.revokeObjectURL(a.href);
-    });
-
-    btnClear.addEventListener('click',()=>{
-      if(confirm('¿Borrar JSON cargado?')){ DATA = null; localStorage.removeItem('canva_builder_json'); refreshPreview(); }
-    });
-
-    btnDownload.addEventListener('click',()=>{
-      if(!DATA){ alert('Primero importa tu videos.json'); return; }
-      // Ordenar secciones por order; items en el orden original
-      const sections = [...(DATA.sections||[])].sort((a,b)=>(a.order||0)-(b.order||0));
-      const items = DATA.items||[];
-      const bySec = {};
-      sections.forEach(s=>bySec[s.id]=[]);
-      items.forEach(it=>{ (bySec[it.section]||(bySec[it.section]=[])).push(it); });
-
-      function esc(s=''){ return String(s).replace(/[&<>]/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m])); }
-
-      let sectionsHtml='';
-      sections.forEach(sec=>{
-        const list = (bySec[sec.id]||[]).map(it=>{
-          const id = ytIdFromUrl(it.url) || it.id || '';
-          const iframe = id ? `<iframe src="https://www.youtube-nocookie.com/embed/${id}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>` : `<a href="${esc(it.url)}" target="_blank">Abrir video</a>`;
-          return `<div class="video">${iframe}<p>${esc(it.title||'Video')} · <a href="${esc(it.url)}" target="_blank" rel="noopener">Abrir en YouTube</a></p></div>`;
-        }).join('\n');
-        sectionsHtml += `\n<div class="section">\n  <h2>${esc(sec.name||'Sección')}</h2>\n  ${list || '<p class="hint">(Sin videos aún)</p>'}\n</div>\n`;
-      });
-
-      const html = `<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Curso Básico de Canva</title>
-  <style>
-    body{margin:0;background:#0b0b0f;color:#e9e9f1;font-family:Poppins,system-ui,Segoe UI,Roboto}
-    header{padding:20px;text-align:center;background:#12121a;border-bottom:2px solid #7cfbde}
-    h1{margin:0;color:#7cfbde}
-    .section{margin:26px auto;padding:18px;max-width:1000px;border:1px solid #7cfbde;border-radius:14px;background:#161621}
-    .section h2{color:#8b5cf6;margin:0 0 10px}
-    .video{margin:12px 0}
-    iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:10px}
-    .cta{text-align:center;margin:18px}
-    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:#7cfbde;color:#0b0b0f;text-decoration:none;font-weight:700}
-    footer{text-align:center;padding:24px;color:#a3a3b2}
-  </style>
-</head>
-<body>
-  <header><h1>CURSO BÁSICO DE CANVA</h1></header>
-  <main>${sectionsHtml}
-    <div class="cta"><p>Si deseas adquirir Canva, consulta con un asesor haciendo clic en este botón:</p><a class="btn" href="https://walink.co/70069f" target="_blank">Quiero adquirir Canva</a></div>
-  </main>
-  <footer><p>⚡ Hecho con ❤️ para tu curso de Canva</p></footer>
-</body>
-</html>`;
-
-      const blob = new Blob([html], {type:'text/html'});
-      const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'index_publico.html'; a.click(); URL.revokeObjectURL(a.href);
-    });
+    btnAdmin.onclick=()=>{loginBox.style.display='flex';pwd.focus();}
+    cancel.onclick=()=>{loginBox.style.display='none';pwd.value='';}
+    enter.onclick=()=>{if(pwd.value===PASSWORD){panel.classList.add('show');loginBox.style.display='none';pwd.value='';}else alert('Contraseña incorrecta')}
+    pwd.addEventListener('keydown',e=>{if(e.key==='Enter')enter.click()})
   </script>
 </body>
 </html>
+
