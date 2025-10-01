@@ -7,7 +7,7 @@
   <style>
     :root{
       --bg:#0b0b0f; --panel:#12121a; --card:#161621; --text:#e9e9f1; --muted:#a3a3b2;
-      --brand:#7cfbde; --brand2:#8b5cf6; --ok:#22c55e; --danger:#ef4444; --radius:14px;
+      --brand:#7cfbde; --brand2:#8b5cf6; --radius:14px;
     }
     *{box-sizing:border-box}
     body{margin:0;background:#0b0b0f;color:var(--text);font-family:Poppins,system-ui,Segoe UI,Roboto}
@@ -21,51 +21,28 @@
     .video{margin:12px 0; display:inline-block; width:45%; vertical-align:top;}
     iframe{width:100%; aspect-ratio:16/9; border:0; border-radius:10px}
     footer{text-align:center;padding:24px;color:var(--muted)}
-
-    /* Admin UI */
-    .adminbar{display:flex;gap:8px;align-items:center}
-    .ghost{background:transparent;border:1px dashed rgba(124,251,222,.5);color:var(--text);border-radius:10px;padding:8px 12px;cursor:pointer}
-    .ok{background:linear-gradient(135deg,#22c55e,#a7f3d0);border:0;color:#08210f;border-radius:10px;padding:8px 12px;font-weight:800;cursor:pointer}
-    .danger{background:linear-gradient(135deg,#ef4444,#fecaca);border:0;color:#280808;border-radius:10px;padding:8px 12px;font-weight:800;cursor:pointer}
-    .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .input{background:#0f0f16;border:1px solid rgba(124,251,222,.35);color:var(--text);border-radius:10px;padding:8px 10px}
-    .panel{display:none;margin:18px 0;padding:16px;border:1px solid rgba(124,251,222,.35);border-radius:12px;background:var(--panel)}
-    .panel.show{display:block}
-    .table{width:100%;border-collapse:collapse;margin-top:10px}
-    .table th,.table td{border-bottom:1px solid rgba(124,251,222,.2);padding:8px;text-align:left;vertical-align:top}
-    .hint{color:var(--muted);font-size:13px}
-    .pill{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:999px;background:rgba(124,251,222,.08);border:1px solid rgba(124,251,222,.25);margin:4px 6px 0 0}
-    .mini{padding:4px 8px;border-radius:8px;font-size:12px}
-    .w-100{width:100%}
-
-    /* Responsive videos */
-    @media (max-width:768px){
-      .video{width:100%;}
-    }
+    @media (max-width:768px){ .video{width:100%;} }
   </style>
 </head>
 <body>
   <header>
-    <div class="wrap row">
-      <h1 class="row" style="flex:1 1 auto">CURSO BÁSICO DE CANVA <span class="pill">Vista pública</span></h1>
-      <div class="adminbar">
-        <button id="btnAdmin" class="ghost">Admin</button>
-        <div id="loginBox" class="row" style="display:none">
-          <input id="pwd" class="input" type="password" placeholder="Contraseña" />
-          <button id="enter" class="ok">Entrar</button>
-          <button id="cancel" class="ghost">Cancelar</button>
-        </div>
-      </div>
+    <div class="wrap">
+      <h1>CURSO BÁSICO DE CANVA</h1>
     </div>
   </header>
 
   <main class="wrap">
-    <!-- ===== CONTENIDO PÚBLICO FIJO ===== -->
+    <!-- ===================== 1) INTRODUCCIÓN ===================== -->
     <div class="section">
-      <h2>Introducción</h2>
+      <h2>INTRODUCCIÓN</h2>
       <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/nz_unjgg_CE" allowfullscreen></iframe><p>1 Creando una cuenta en Canva</p></div>
       <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/EPz8eWfE4jE" allowfullscreen></iframe><p>2 Inicio en Canva - Barras, Elementos, Paneles</p></div>
       <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/6e6_Uctc35A" allowfullscreen></iframe><p>3 Página de Edición - Distintos Paneles</p></div>
+    </div>
+
+    <!-- ===================== 2) FUNCIONALIDADES ===================== -->
+    <div class="section">
+      <h2>FUNCIONALIDADES</h2>
       <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/CLjjxVcXeAU" allowfullscreen></iframe><p>1 Realizar un Diseño Personalizado, Post para Instagram</p></div>
       <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/kn8m000eKo0" allowfullscreen></iframe><p>2 Crear Nuevas páginas y utilizar la Herramienta Posición</p></div>
       <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/gX2oDsMmVio" allowfullscreen></iframe><p>3 Utilizar Marcos, Subir imágenes Propias</p></div>
@@ -74,317 +51,42 @@
       <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/rfJSQxcKI9U" allowfullscreen></iframe><p>6 Cómo Descargar los Diseños - Todos los Formatos</p></div>
     </div>
 
+    <!-- ===================== 3) REDES SOCIALES ===================== -->
     <div class="section">
-      <h2>Básico</h2>
-      <p class="hint">Aquí agregaremos los videos de la parte básica en tu versión pública.</p>
+      <h2>REDES SOCIALES</h2>
+      <p class="hint">(Próximamente: aquí añadiremos los videos de Redes Sociales)</p>
     </div>
 
-    <!-- DINÁMICO (creado desde admin) -->
-    <div id="dynSections"></div>
+    <!-- = LOGOTIPOS Y CARÁTULAS PARA EBOOKS = -->
+    <div class="section">
+      <h2>LOGOTIPOS Y CARÁTULAS PARA EBOOKS</h2>
+      <p class="hint">(Próximamente: aquí añadiremos los videos de Logotipos y Carátulas para eBooks)</p>
+    </div>
 
+    <!-- ===================== 5) FUNCIONES DE CANVA PRO ===================== -->
+    <div class="section">
+      <h2>FUNCIONES DE CANVA PRO</h2>
+      <p class="hint">(Próximamente: aquí añadiremos los videos de Canva Pro)</p>
+    </div>
+
+    <!-- ===================== 6) IDENTIDAD VISUAL ===================== -->
+    <div class="section">
+      <h2>IDENTIDAD VISUAL</h2>
+      <p class="hint">(Próximamente: aquí añadiremos los videos de Identidad Visual)</p>
+    </div>
+
+    <!-- CTA -->
     <div class="cta">
       <p>Si deseas adquirir Canva, consulta con un asesor haciendo clic en este botón:</p>
       <a class="btn" href="https://walink.co/70069f" target="_blank">Quiero adquirir Canva</a>
     </div>
-
-    <!-- PANEL ADMIN COMPLETO -->
-    <section id="adminPanel" class="panel">
-      <h2>Modo Administrador</h2>
-      <p class="hint">Crea, edita, reordena y mueve videos entre secciones. Se guarda en <b>tu navegador</b> (localStorage). Genera un HTML público cuando quieras compartirlo.</p>
-
-      <!-- Crear sección -->
-      <div class="section" style="border-color: rgba(124,251,222,.35); background:#0f0f16;">
-        <h3 style="margin-top:0;color:#7cfbde">Secciones</h3>
-        <div class="row">
-          <input id="secName" class="input" placeholder="Nombre de la sección (p. ej., Intermedio)" style="flex:1"/>
-          <button id="addSec" class="ok">Agregar sección</button>
-        </div>
-        <p class="hint">Puedes editar nombre, eliminar y cambiar el orden con ↑ ↓.</p>
-        <div id="secList" style="margin-top:8px"></div>
-      </div>
-
-      <!-- Agregar video -->
-      <div class="section" style="border-color: rgba(124,251,222,.35); background:#0f0f16;">
-        <h3 style="margin-top:0;color:#7cfbde">Agregar video</h3>
-        <div class="row" style="gap:8px">
-          <select id="videoSec" class="input" style="min-width:220px"></select>
-          <input id="videoTitle" class="input" placeholder="Título del video" style="flex:1"/>
-          <input id="videoUrl" class="input" placeholder="URL de YouTube (https://...)" style="flex:2"/>
-          <button id="addVideo" class="ok">Agregar</button>
-        </div>
-      </div>
-
-      <!-- Listado editable de videos -->
-      <table class="table" id="tblDyn" style="display:none">
-        <thead>
-          <tr>
-            <th style="width:18%">Sección</th>
-            <th style="width:24%">Título</th>
-            <th>URL</th>
-            <th style="width:14%">Orden</th>
-            <th style="width:18%">Acciones</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-
-      <!-- Exportar / Importar / Limpiar -->
-      <div class="row" style="margin:10px 0">
-        <button id="btnExportJSON" class="ghost">Exportar JSON</button>
-        <button id="btnImportJSON" class="ghost">Importar JSON</button>
-        <button id="btnExportHTML" class="ok">Descargar página pública (HTML)</button>
-        <button id="btnClearAll" class="danger">Borrar todo (dinámico)</button>
-      </div>
-    </section>
   </main>
 
   <footer>
     <p>⚡ Hecho con ❤️ para tu curso de Canva</p>
   </footer>
-
-  <script>
-    // Aviso si se abre local
-    if (location.protocol === 'file:') {
-      const warn = document.createElement('div');
-      warn.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);bottom:16px;background:#12121a;color:#fff;padding:10px 14px;border:1px solid #7cfbde;border-radius:10px;z-index:9999;font-size:14px;';
-      warn.textContent = 'Estás viendo el archivo local. Para que otros vean lo mismo, súbelo a hosting y comparte la URL pública.';
-      document.body.appendChild(warn);
-      setTimeout(()=>warn.remove(), 12000);
-    }
-
-    // ===== Admin: login simple =====
-    const PASSWORD = 'a@97030625';
-    const STORAGE_KEY = 'canva_dyn_sections_v2';
-
-    const btnAdmin=document.getElementById('btnAdmin');
-    const loginBox=document.getElementById('loginBox');
-    const enterBtn=document.getElementById('enter');
-    const cancelBtn=document.getElementById('cancel');
-    const pwd=document.getElementById('pwd');
-    const panel=document.getElementById('adminPanel');
-
-    btnAdmin.addEventListener('click', ()=>{ loginBox.style.display='flex'; pwd.focus(); });
-    cancelBtn.addEventListener('click', ()=>{ loginBox.style.display='none'; pwd.value=''; });
-    enterBtn.addEventListener('click', ()=>{ if(pwd.value===PASSWORD){ panel.classList.add('show'); loginBox.style.display='none'; pwd.value=''; } else alert('Contraseña incorrecta'); });
-    pwd.addEventListener('keydown', (e)=>{ if(e.key==='Enter') enterBtn.click(); });
-
-    // ===== Datos dinámicos =====
-    let DATA = { sections: [], items: [] }; // {id,name,order}; {id,url,title,section,addedAt}
-
-    function save(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(DATA)); }
-    function load(){ try{ const raw=localStorage.getItem(STORAGE_KEY); DATA = raw? JSON.parse(raw): DATA; }catch{} }
-
-    // Helpers
-    function uid(){ return Math.random().toString(36).slice(2,9); }
-    function ytIdFromUrl(u){ try{ const url = new URL(u); if(url.hostname.includes('youtu.be')) return url.pathname.slice(1); if(url.hostname.includes('youtube.com')) return url.searchParams.get('v'); }catch{} return null; }
-
-    // UI refs
-    const dynSectionsWrap = document.getElementById('dynSections');
-    const secName = document.getElementById('secName');
-    const addSec = document.getElementById('addSec');
-    const secList = document.getElementById('secList');
-
-    const videoSec = document.getElementById('videoSec');
-    const videoTitle = document.getElementById('videoTitle');
-    const videoUrl = document.getElementById('videoUrl');
-    const addVideo = document.getElementById('addVideo');
-
-    const tblDyn = document.getElementById('tblDyn');
-    const tbody = tblDyn.querySelector('tbody');
-
-    const btnExportJSON = document.getElementById('btnExportJSON');
-    const btnImportJSON = document.getElementById('btnImportJSON');
-    const btnExportHTML = document.getElementById('btnExportHTML');
-    const btnClearAll = document.getElementById('btnClearAll');
-
-    function sortSections(){ DATA.sections.sort((a,b)=>(a.order||0)-(b.order||0)); }
-
-    function refreshSecSelect(){
-      videoSec.innerHTML='';
-      sortSections();
-      DATA.sections.forEach(s=>{
-        const o=document.createElement('option'); o.value=s.id; o.textContent=s.name; videoSec.appendChild(o);
-      });
-    }
-
-    function refreshSecList(){
-      sortSections();
-      if(!DATA.sections.length){ secList.innerHTML = '<span class="hint">(Sin secciones creadas aún)</span>'; return; }
-      secList.innerHTML = '';
-      DATA.sections.forEach((s,idx)=>{
-        const el = document.createElement('span'); el.className='pill';
-        el.innerHTML = `${idx+1}. <b>${s.name}</b>
-          <button class="mini ghost" data-act="up" data-id="${s.id}">↑</button>
-          <button class="mini ghost" data-act="down" data-id="${s.id}">↓</button>
-          <button class="mini ghost" data-act="edit" data-id="${s.id}">✎</button>
-          <button class="mini danger" data-act="del" data-id="${s.id}">✕</button>`;
-        secList.appendChild(el);
-      });
-      secList.querySelectorAll('button').forEach(btn=>{
-        const id = btn.getAttribute('data-id');
-        const act = btn.getAttribute('data-act');
-        btn.onclick = () => {
-          const i = DATA.sections.findIndex(x=>x.id===id); if(i<0) return;
-          if(act==='up' && i>0){ const t=DATA.sections[i]; DATA.sections[i]=DATA.sections[i-1]; DATA.sections[i-1]=t; DATA.sections.forEach((s,k)=>s.order=k); save(); renderAll(); }
-          if(act==='down' && i<DATA.sections.length-1){ const t=DATA.sections[i]; DATA.sections[i]=DATA.sections[i+1]; DATA.sections[i+1]=t; DATA.sections.forEach((s,k)=>s.order=k); save(); renderAll(); }
-          if(act==='edit'){
-            const name = prompt('Nuevo nombre de la sección:', DATA.sections[i].name||'');
-            if(name!==null){ DATA.sections[i].name = name.trim()||DATA.sections[i].name; save(); renderAll(); }
-          }
-          if(act==='del'){
-            if(confirm('¿Eliminar sección y sus videos?')){ const sid=DATA.sections[i].id; DATA.sections.splice(i,1); DATA.items = DATA.items.filter(v=>v.section!==sid); save(); renderAll(); }
-          }
-        };
-      });
-    }
-
-    function refreshTable(){
-      const dict = Object.fromEntries(DATA.sections.map(s=>[s.id,s.name]));
-      tbody.innerHTML = '';
-      if(!DATA.items.length){ tblDyn.style.display='none'; return; }
-      tblDyn.style.display='table';
-
-      // Para reordenar dentro de cada sección, trabajamos por índices de DATA.items
-      function indexWithinSection(globalIndex){
-        const sec = DATA.items[globalIndex].section;
-        let idx = -1; let count=-1;
-        for(let i=0;i<DATA.items.length;i++){
-          if(DATA.items[i].section===sec){ count++; if(i===globalIndex){ idx=count; break; } }
-        }
-        return {sectionId:sec, pos:idx};
-      }
-
-      DATA.items.forEach((it,globalIdx)=>{
-        const tr=document.createElement('tr');
-        const secSel = document.createElement('select'); secSel.className='input w-100';
-        DATA.sections.forEach(s=>{ const o=document.createElement('option'); o.value=s.id; o.textContent=s.name; if(s.id===it.section) o.selected=true; secSel.appendChild(o); });
-
-        const titleInp = document.createElement('input'); titleInp.className='input w-100'; titleInp.value = it.title||'';
-        const urlInp = document.createElement('input'); urlInp.className='input w-100'; urlInp.value = it.url||'';
-
-        const orderCell = document.createElement('td');
-        const upBtn = document.createElement('button'); upBtn.textContent='↑'; upBtn.className='mini ghost';
-        const downBtn = document.createElement('button'); downBtn.textContent='↓'; downBtn.className='mini ghost';
-        orderCell.append(upBtn, downBtn);
-
-        const actionsCell = document.createElement('td');
-        const saveBtn = document.createElement('button'); saveBtn.textContent='Guardar'; saveBtn.className='mini ok';
-        const delBtn = document.createElement('button'); delBtn.textContent='Eliminar'; delBtn.className='mini danger';
-        actionsCell.append(saveBtn, document.createTextNode(' '), delBtn);
-
-        const tdSec = document.createElement('td'); tdSec.appendChild(secSel);
-        const tdTitle = document.createElement('td'); tdTitle.appendChild(titleInp);
-        const tdUrl = document.createElement('td'); tdUrl.appendChild(urlInp);
-        tr.appendChild(tdSec); tr.appendChild(tdTitle); tr.appendChild(tdUrl); tr.appendChild(orderCell); tr.appendChild(actionsCell);
-        tbody.appendChild(tr);
-
-        // Handlers
-        saveBtn.onclick = ()=>{
-          it.section = secSel.value; it.title = titleInp.value.trim(); it.url = urlInp.value.trim(); save(); renderAll();
-        };
-        delBtn.onclick = ()=>{ if(confirm('¿Eliminar este video?')){ DATA.items.splice(globalIdx,1); save(); renderAll(); } };
-
-        upBtn.onclick = ()=>{
-          const {sectionId, pos} = indexWithinSection(globalIdx);
-          if(pos<=0) return; // ya está arriba
-          // encontrar el índice global del item anterior en la misma sección
-          let prevIdx = -1; let count=-1;
-          for(let i=0;i<DATA.items.length;i++){
-            if(DATA.items[i].section===sectionId){ count++; if(count===pos-1){ prevIdx=i; break; } }
-          }
-          if(prevIdx>=0){ const t=DATA.items[globalIdx]; DATA.items[globalIdx]=DATA.items[prevIdx]; DATA.items[prevIdx]=t; save(); renderAll(); }
-        };
-        downBtn.onclick = ()=>{
-          const {sectionId, pos} = indexWithinSection(globalIdx);
-          // obtener total en esa sección
-          let total=-1; for(let i=0;i<DATA.items.length;i++){ if(DATA.items[i].section===sectionId) total++; }
-          if(pos>=total) return; // ya está al final
-          // encontrar el índice global del siguiente en la misma sección
-          let nextIdx = -1; let count=-1;
-          for(let i=0;i<DATA.items.length;i++){
-            if(DATA.items[i].section===sectionId){ count++; if(count===pos+1){ nextIdx=i; break; } }
-          }
-          if(nextIdx>=0){ const t=DATA.items[globalIdx]; DATA.items[globalIdx]=DATA.items[nextIdx]; DATA.items[nextIdx]=t; save(); renderAll(); }
-        };
-      });
-    }
-
-    function renderDynamic(){
-      dynSectionsWrap.innerHTML='';
-      if(!DATA.sections.length){ dynSectionsWrap.style.display='none'; return; }
-      dynSectionsWrap.style.display='block';
-      // Agrupar por sección en el orden actual de sections y de items
-      const bySec = {}; DATA.sections.forEach(s=>bySec[s.id]=[]);
-      DATA.items.forEach(it=>{ (bySec[it.section]||(bySec[it.section]=[])).push(it); });
-
-      DATA.sections.forEach(sec=>{
-        const box=document.createElement('div'); box.className='section';
-        const h=document.createElement('h2'); h.textContent=sec.name; box.appendChild(h);
-        (bySec[sec.id]||[]).forEach(it=>{
-          const id = ytIdFromUrl(it.url) || it.id || '';
-          const v=document.createElement('div'); v.className='video';
-          if(id){ v.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${id}" allowfullscreen></iframe><p>${it.title||'Video'}</p>`; }
-          else { v.innerHTML=`<a href="${it.url}" target="_blank">Abrir video</a>`; }
-          box.appendChild(v);
-        });
-        dynSectionsWrap.appendChild(box);
-      });
-    }
-
-    function renderAll(){ refreshSecSelect(); refreshSecList(); refreshTable(); renderDynamic(); }
-
-    // Crear sección
-    addSec.addEventListener('click', ()=>{
-      const name = secName.value.trim();
-      if(!name){ alert('Ponle un nombre a la sección'); return; }
-      const id = name.toLowerCase().replace(/[^a-z0-9]+/g,'-')+ '-' + uid();
-      DATA.sections.push({id, name, order: DATA.sections.length});
-      secName.value=''; save(); renderAll();
-    });
-
-    // Agregar video
-    addVideo.addEventListener('click', ()=>{
-      const section = videoSec.value; const title = videoTitle.value.trim(); const url = videoUrl.value.trim();
-      if(!section){ alert('Selecciona una sección'); return; }
-      if(!url){ alert('Pega la URL del video'); return; }
-      const id = ytIdFromUrl(url) || uid();
-      DATA.items.push({ id, url, title, section, addedAt: Date.now() });
-      videoTitle.value=''; videoUrl.value=''; save(); renderAll();
-    });
-
-    // Exportar / Importar / Limpiar / HTML Público
-    btnExportJSON.addEventListener('click', ()=>{
-      const blob = new Blob([JSON.stringify(DATA,null,2)], {type:'application/json'});
-      const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='videos.json'; a.click(); URL.revokeObjectURL(a.href);
-    });
-    btnImportJSON.addEventListener('click', ()=>{
-      const inp=document.createElement('input'); inp.type='file'; inp.accept='.json,application/json';
-      inp.onchange=async (e)=>{ const f=e.target.files[0]; if(!f) return; const txt=await f.text(); try{ const obj=JSON.parse(txt); if(obj.sections&&obj.items){ DATA=obj; save(); renderAll(); } else alert('JSON debe tener {sections:[], items:[]}'); }catch{ alert('JSON inválido'); } };
-      inp.click();
-    });
-    btnClearAll.addEventListener('click', ()=>{ if(confirm('¿Borrar todas las secciones y videos creados en admin?')){ DATA={sections:[], items:[]}; save(); renderAll(); } });
-
-    btnExportHTML.addEventListener('click', ()=>{
-      function esc(s=''){ return String(s).replace(/[&<>]/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m])); }
-      const bySec={}; DATA.sections.forEach(s=>bySec[s.id]=[]); DATA.items.forEach(it=>{ (bySec[it.section]||(bySec[it.section]=[])).push(it); });
-      // ordenar sections por order y usar el orden actual de items
-      const sectionsHtml = DATA.sections.sort((a,b)=>(a.order||0)-(b.order||0)).map(sec=>{
-        const list=(bySec[sec.id]||[]).map(it=>{
-          const vid = ytIdFromUrl(it.url) || it.id || '';
-          const iframe = vid? `<iframe src="https://www.youtube-nocookie.com/embed/${vid}" allowfullscreen></iframe>` : `<a href="${esc(it.url)}" target="_blank">Abrir video</a>`;
-          return `<div class=\"video\">${iframe}<p>${esc(it.title||'Video')}</p></div>`;
-        }).join('');
-        return `\n<div class=\"section\">\n  <h2>${esc(sec.name)}</h2>\n  ${list || '<p class=\\"hint\\">(Sin videos aún)</p>'}\n</div>`;
-      }).join('');
-
-      const html = `<!DOCTYPE html>\n<html lang=\"es\">\n<head><meta charset=\"UTF-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><title>Curso Básico de Canva</title>\n<style>:root{--bg:#0b0b0f;--panel:#12121a;--card:#161621;--text:#e9e9f1;--muted:#a3a3b2;--brand:#7cfbde;--brand2:#8b5cf6;--radius:14px}*{box-sizing:border-box}body{margin:0;background:#0b0b0f;color:var(--text);font-family:Poppins,system-ui,Segoe UI,Roboto}header{padding:20px;text-align:center;background:#12121a;border-bottom:2px solid var(--brand)}h1{margin:0;color:var(--brand)}.section{margin:26px auto;padding:18px;max-width:1000px;border:1px solid var(--brand);border-radius:var(--radius);background:#161621}.section h2{color:#8b5cf6;margin:0 0 10px}.video{margin:12px 0;display:inline-block;width:45%;vertical-align:top}iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:10px}.cta{text-align:center;margin:18px}.btn{display:inline-block;padding:10px 16px;border-radius:10px;background:#7cfbde;color:#0b0b0f;text-decoration:none;font-weight:700}footer{text-align:center;padding:24px;color:#a3a3b2}@media (max-width:768px){.video{width:100%}}</style></head>\n<body>\n<header><h1>CURSO BÁSICO DE CANVA</h1></header>\n<main>${sectionsHtml}\n<div class=\"cta\"><p>Si deseas adquirir Canva, consulta con un asesor haciendo clic en este botón:</p><a class=\"btn\" href=\"https://walink.co/70069f\" target=\"_blank\">Quiero adquirir Canva</a></div>\n</main>\n<footer><p>⚡ Hecho con ❤️ para tu curso de Canva</p></footer>\n</body></html>`;
-      const blob = new Blob([html], {type:'text/html'});
-      const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='index_publico.html'; a.click(); URL.revokeObjectURL(a.href);
-    });
-
-    // Init
-    load(); renderAll();
-  </script>
 </body>
 </html>
+
+
 
